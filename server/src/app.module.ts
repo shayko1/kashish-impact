@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { NotesModule } from './notes/notes.module';
+import { StepsModule } from './steps/steps.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
@@ -18,7 +19,8 @@ import { UsersModule } from './users/users.module';
       "synchronize": true
   }),
     NotesModule,
-    UsersModule
+    UsersModule,
+    StepsModule
   ],
   controllers: [AppController],
   providers: [AppService],
