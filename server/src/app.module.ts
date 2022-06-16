@@ -8,11 +8,11 @@ import { NotesModule } from './notes/notes.module';
   imports: [
     TypeOrmModule.forRoot({
       "type": "mysql",
-      "host": "localhost",
+      "host": "sql11.freemysqlhosting.net",
       "port": 3306,
-      "username": "root",
-      "password": "password",
-      "database": "test",
+      "username": "sql11500189",
+      "password": "wJy2VHl2h7",
+      "database": "sql11500189",
       "entities": ["dist/**/*.entity{.ts,.js}"],
       "synchronize": true
   }),

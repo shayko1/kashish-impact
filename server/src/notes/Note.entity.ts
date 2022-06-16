@@ -21,4 +21,4 @@ export class Note extends BaseEntity {
   @MinLength(1)
   @IsString()
   new_description: string;
-}
+} 
