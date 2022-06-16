@@ -14,11 +14,13 @@ export class User extends BaseEntity {
 
   @Column()
   @MinLength(1)
+  @MaxLength(30)
   @IsString()
   lastName: string;
-
+  
   @Column()
   @MinLength(1)
+  @MaxLength(30)
   @IsString()
   new_description: string;
 } 
