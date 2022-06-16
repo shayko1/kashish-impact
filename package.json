@@ -1,0 +1,21 @@
+{
+  "name": "kashish-impact",
+  "version": "1.0.0",
+  "description": "Kashish Impact team!!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "set:heroku": "heroku git:remote -a kashish-impact-test",
+    "deploy:prod": "git subtree push --prefix server heroku master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shayko1/kashish-impact.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shayko1/kashish-impact/issues"
+  },
+  "homepage": "https://github.com/shayko1/kashish-impact#readme"
+}
