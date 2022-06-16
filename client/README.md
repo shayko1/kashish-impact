@@ -23,11 +23,8 @@ npx create-react-native-app -t with-typescript
 ## 🚀 How to use
 
 #### Creating a new project
-
-- Install the CLI: `npm i -g expo-cli`
-- Create a project: `npx create-react-native-app -t with-typescript`
-- `cd` into the project
 - Install [Android Studio](https://developer.android.com/studio) and run an Emulator
+- Clone the repo
 - run yarn start
 
 ## 📝 Notes
