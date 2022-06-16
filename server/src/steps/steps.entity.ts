@@ -7,17 +7,14 @@ export class Step extends BaseEntity {
   id: number;
 
   @Column()
-  @MinLength(1)
   @IsNumber()
   categoryId: number;
 
   @Column()
-  @MinLength(1)
   @IsNumber()
   subCategoryId: number;
 
   @Column()
-  @MinLength(1)
   @IsNumber()
   orderNumber: number;
 } 
