@@ -1,4 +1,4 @@
-# TypeScript Example
+# Kashish Impact client
 
 <p>
   <!-- iOS -->
@@ -9,11 +9,16 @@
   <img alt="Supports Expo Web" longdesc="Supports Expo Web" src="https://img.shields.io/badge/web-4630EB.svg?style=flat-square&logo=GOOGLE-CHROME&labelColor=4285F4&logoColor=fff" />
 </p>
 
+This App is based on:
+- React Native app (create-react-native-app)
+- Mobx as state management
+- Android studio as emulator
+- Wix UI for Mobile
+- 
+
 ```sh
 npx create-react-native-app -t with-typescript
 ```
-
-TypeScript is a superset of JavaScript which gives you static types and powerful tooling in Visual Studio Code including autocompletion and useful inline warnings for type errors.
 
 ## 🚀 How to use
 
@@ -23,14 +28,14 @@ TypeScript is a superset of JavaScript which gives you static types and powerful
 - Create a project: `npx create-react-native-app -t with-typescript`
 - `cd` into the project
 
-### Adding TypeScript to existing projects
-
-- Create a blank TypeScript config: `touch tsconfig.json`
-- Run `expo start` to automatically configure TypeScript
-- Rename files to TypeScript, `.tsx` for React components and `.ts` for plain typescript files
-
-> 💡 You can disable the TypeScript setup in Expo CLI with the environment variable `EXPO_NO_TYPESCRIPT_SETUP=1 expo start`
-
 ## 📝 Notes
 
 - [Expo TypeScript guide](https://docs.expo.dev/versions/latest/guides/typescript/)
+
+## [Miro link](https://miro.com/app/board/uXjVOsrZSVw=/)
+
+## [Lucidchart link - design](https://lucid.app/lucidchart/073ff1e9-03e1-437a-a419-c573d34549a3/edit?page=0_0&invitationId=inv_c2180b75-41f3-4906-87a0-f930d7dfa366#)
+
+## [swagger](https://kashish-impact-staging.herokuapp.com/api/#/default/NotesController_findAll)
+
+## [Wix UI for Mobile](https://wix.github.io/react-native-ui-lib/docs/getting-started/setup)
