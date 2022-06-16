@@ -2,6 +2,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { SubCategory } from './subcategory.entity';
 
 @Injectable()
 export class SubCategoriesService {
@@ -12,11 +13,11 @@ export class SubCategoriesService {
     return await this.categoriesRepository.find();
   }
 
-  findOne(id: number): Promise<Category> {
+  findOne(id: number): Promise<SubCategory> {
     return this.categoriesRepository.findOne({ where: {id : id }});
   }
 
-  async createUser(user: Category) {
+  async createUser(user: SubCategory) {
     this.categoriesRepository.save(user);
   }
 
@@ -24,13 +25,13 @@ export class SubCategoriesService {
     await this.categoriesRepository.delete(id);
   }
 
-  async editUser(id: number, category: Category): Promise<Category> {
+  async editUser(id: number, subCategory: SubCategory): Promise<SubCategory> {
     const editUser = await this.categoriesRepository.findOne({ where: {id : id }});
     if (!editUser) {
       throw new NotFoundException('User is not found');
     }
-    editUser.name = category.name;
-    editUser.description = category.description;
+    editUser.name = subCategory.name;
+    editUser.description = subCategory.description;
     await editUser.save();
     return editUser;
   }
