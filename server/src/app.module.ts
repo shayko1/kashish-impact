@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { NotesModule } from './notes/notes.module';
 import { StepsModule } from './steps/steps.module';
+import { StepFieldsModule } from './stepsFields/stepsFields.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
@@ -20,7 +21,8 @@ import { UsersModule } from './users/users.module';
   }),
     NotesModule,
     UsersModule,
-    StepsModule
+    StepsModule,
+    StepFieldsModule
   ],
   controllers: [AppController],
   providers: [AppService],
