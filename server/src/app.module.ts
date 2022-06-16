@@ -6,12 +6,13 @@ import { NotesModule } from './notes/notes.module';
 import { StepsModule } from './steps/steps.module';
 import { StepFieldsModule } from './stepsFields/stepsFields.module';
 import { UsersModule } from './users/users.module';
+require('dotenv').config()
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       "type": "mysql",
-      "host": "sql11.freemysqlhosting.net",
+      "host": process.env.HOST,
       "port": 3306,
       "username": "sql11500189",
       "password": "wJy2VHl2h7",
