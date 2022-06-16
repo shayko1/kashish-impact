@@ -21,7 +21,7 @@ export class SubCategory extends BaseEntity {
   @Column()
   @MinLength(1)
   @IsString()
-  icon: Url;
+  icon: string;
 
   @Column()
   @MinLength(1)
