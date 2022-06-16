@@ -1,6 +1,7 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { IsNumber, IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
-import { Url } from 'url';
+import { ApiProperty } from '@nestjs/swagger';
+
 
 @Entity()
 export class SubCategory extends BaseEntity {
@@ -11,20 +12,24 @@ export class SubCategory extends BaseEntity {
   @MinLength(1)
   @MaxLength(150)
   @IsString()
+  @ApiProperty()
   name: string;
 
   @Column()
   @MinLength(1)
   @IsString()
+  @ApiProperty()
   description: string;
 
   @Column()
   @MinLength(1)
   @IsString()
+  @ApiProperty()
   icon: string;
 
   @Column()
   @MinLength(1)
   @IsNumber()
+  @ApiProperty()
   categoryId: number;
 }

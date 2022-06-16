@@ -9,7 +9,7 @@ export class CategoriesService {
   constructor(
     @InjectRepository(Category) private categoriesRepository: Repository<Category>,
   ) {}
-  async getUsers(): Promise<Category[]> {
+  async getCategories(): Promise<Category[]> {
     return await this.categoriesRepository.find();
   }
 
@@ -17,7 +17,7 @@ export class CategoriesService {
     return this.categoriesRepository.findOne({ where: {id : id }});
   }
 
-  async createUser(category: Category) {
+  async createCategory(category: Category) {
     this.categoriesRepository.save(category);
   }
 
@@ -25,7 +25,7 @@ export class CategoriesService {
     await this.categoriesRepository.delete(id);
   }
 
-  async editUser(id: number, category: Category): Promise<Category> {
+  async editCategory(id: number, category: Category): Promise<Category> {
     const editUser = await this.categoriesRepository.findOne({ where: {id : id }});
     if (!editUser) {
       throw new NotFoundException('User is not found');

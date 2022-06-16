@@ -17,7 +17,7 @@ import { SubCategory } from './subcategory.entity';
   
     @Get()
     findAll() {
-      return this.subCategoriesService.getUsers();
+      return this.subCategoriesService.getSubCategories();
     }
   
     @Get(':id')
@@ -26,12 +26,12 @@ import { SubCategory } from './subcategory.entity';
     }
   
     @Post() create(@Body() subCategory: SubCategory) {
-      return this.subCategoriesService.createUser(subCategory);
+      return this.subCategoriesService.createSubCategory(subCategory);
     }
   
     @Patch(':id')
     async editUser(@Body() subCategory: SubCategory, @Param('id') id: number): Promise<SubCategory> {
-      const noteEdited = await this.subCategoriesService.editUser(id, subCategory);
+      const noteEdited = await this.subCategoriesService.editSubCategory(id, subCategory);
       return noteEdited;
     }
   

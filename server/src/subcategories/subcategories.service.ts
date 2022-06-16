@@ -8,7 +8,7 @@ export class SubCategoriesService {
   constructor(
     @InjectRepository(SubCategory) private categoriesRepository: Repository<SubCategory>,
   ) {}
-  async getUsers(): Promise<SubCategory[]> {
+  async getSubCategories(): Promise<SubCategory[]> {
     return await this.categoriesRepository.find();
   }
 
@@ -16,7 +16,7 @@ export class SubCategoriesService {
     return this.categoriesRepository.findOne({ where: {id : id }});
   }
 
-  async createUser(user: SubCategory) {
+  async createSubCategory(user: SubCategory) {
     this.categoriesRepository.save(user);
   }
 
@@ -24,7 +24,7 @@ export class SubCategoriesService {
     await this.categoriesRepository.delete(id);
   }
 
-  async editUser(id: number, subCategory: SubCategory): Promise<SubCategory> {
+  async editSubCategory(id: number, subCategory: SubCategory): Promise<SubCategory> {
     const editUser = await this.categoriesRepository.findOne({ where: {id : id }});
     if (!editUser) {
       throw new NotFoundException('User is not found');

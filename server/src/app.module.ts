@@ -6,6 +6,8 @@ import { NotesModule } from './notes/notes.module';
 import { StepsModule } from './steps/steps.module';
 import { StepFieldsModule } from './stepsFields/stepsFields.module';
 import { UsersModule } from './users/users.module';
+import { CategoriesModule } from './categories/categories.module';
+import { SubCategoriesModule } from './subcategories/subcategories.module';
 require('dotenv').config()
 
 @Module({
@@ -23,7 +25,9 @@ require('dotenv').config()
     NotesModule,
     UsersModule,
     StepsModule,
-    StepFieldsModule
+    StepFieldsModule,
+    CategoriesModule,
+    SubCategoriesModule
   ],
   controllers: [AppController],
   providers: [AppService],

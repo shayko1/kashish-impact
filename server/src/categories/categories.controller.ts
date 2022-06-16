@@ -8,6 +8,7 @@ import {
     Post,
   } from '@nestjs/common';
   import { ParseIntPipe } from '@nestjs/common/pipes/parse-int.pipe';
+import { ApiOkResponse, ApiProperty } from '@nestjs/swagger';
 import { CategoriesService } from './categories.service';
 import { Category } from './category.entity';
   
@@ -16,8 +17,14 @@ import { Category } from './category.entity';
     constructor(private categoriesService: CategoriesService) {}
   
     @Get()
+    @ApiOkResponse({
+      description: 'Category object',
+      type: Category,
+      isArray: true // <= diff is here
+    }
+  )
     findAll() {
-      return this.categoriesService.getUsers();
+      return this.categoriesService.getCategories();
     }
   
     @Get(':id')
@@ -26,12 +33,12 @@ import { Category } from './category.entity';
     }
   
     @Post() create(@Body() user: Category) {
-      return this.categoriesService.createUser(user);
+      return this.categoriesService.createCategory(user);
     }
   
     @Patch(':id')
     async editUser(@Body() user: Category, @Param('id') id: number): Promise<Category> {
-      const noteEdited = await this.categoriesService.editUser(id, user);
+      const noteEdited = await this.categoriesService.editCategory(id, user);
       return noteEdited;
     }
   
