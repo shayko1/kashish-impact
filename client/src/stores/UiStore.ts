@@ -8,7 +8,7 @@ export class UIStore {
   }
 
   public error: string;
-  public state: UI_STATE = UI_STATE.LOADING;
+  public state: UI_STATE = UI_STATE.READY;
   
   setPageState(state: UI_STATE) {
     this.state = state;

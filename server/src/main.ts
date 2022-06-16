@@ -6,6 +6,7 @@ import { CronJob } from 'cron';
 import { MatcherHandler } from './handlers/matches/matcher.handler';
 import { threadId } from 'worker_threads';
 
+require('dotenv').config()
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -37,6 +38,9 @@ async function bootstrap() {
   if (!cronJob.running) {
     cronJob.start();
   }
+
+  console.log("enviroment:" + JSON.stringify(process.env, null, 2));
+
 
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors();

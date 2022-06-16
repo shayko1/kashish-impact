@@ -1,28 +1,39 @@
 import React from 'react';
-import { Image, TextInput, View } from 'react-native';
 import { useStore } from '../../../providers/StoreProvider';
 import { observer } from 'mobx-react';
+import View from 'react-native-ui-lib/view';
+import Text from 'react-native-ui-lib/text';
 
 export const AnonymusLandingPage = observer(() => {
   const { uiStore } = useStore();
   return (
     <>
-      <View>
-        <Image
-          source={{
-            uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
+      <View flex style={{}}>
+        <View
+          style={{
+            width: 300,
+            height: 300,
           }}
-          style={{ width: 200, height: 200 }}
-        />
+          br50
+          margin-s5
+          bg-blue40
+          center
+        >
+          <Text>אפשר עזרה?</Text>
+        </View>
+        <View
+          style={{
+            width: 300,
+            height: 300,
+          }}
+          center
+          br50
+          margin-s5
+          bg-blue40
+        >
+          <Text>בא לי לעזור</Text>
+        </View>
       </View>
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1,
-        }}
-        defaultValue="You can type in me"
-      />
     </>
   );
 });
