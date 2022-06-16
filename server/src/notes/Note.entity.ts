@@ -16,4 +16,9 @@ export class Note extends BaseEntity {
   @MinLength(1)
   @IsString()
   description: string;
+
+  @Column()
+  @MinLength(1)
+  @IsString()
+  new_description: string;
 }
