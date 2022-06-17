@@ -1,4 +1,20 @@
-import { Category } from '../src/consts/types';
+import { Category, User } from '../src/consts/types';
+
+export const defaultConsumerUser = (): User => ({
+  id: 1,
+  firstName: 'Steph',
+  lastName: 'Curry',
+  new_description: 'Best 3 point shutter in the world',
+  type: 'Consumer',
+});
+
+export const defaultSupplierUser = (): User => ({
+  id: 1,
+  firstName: 'Steph',
+  lastName: 'Curry',
+  new_description: 'Best 3 point shutter in the world',
+  type: 'Supplier',
+});
 
 export const defaultCategories = (): Category[] => [
   {

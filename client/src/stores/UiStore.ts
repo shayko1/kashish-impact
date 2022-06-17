@@ -9,7 +9,9 @@ export class UIStore {
 
   public error: string;
   public state: UI_STATE = UI_STATE.READY;
-  
+  public NewRecordProcessLocation: 'First' | 'Category' | 'SubCategory' | 'Steps' = 'First';
+  public anonymusStepNumber?: number;
+
   setPageState(state: UI_STATE) {
     this.state = state;
     this.error = null;

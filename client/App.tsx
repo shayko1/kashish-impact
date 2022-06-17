@@ -4,8 +4,11 @@ import { StoreProvider } from './src/providers/StoreProvider';
 import { RootStore } from './src/stores/store';
 import { ErrorComponent } from './src/components/ErrorComponent';
 import { LoadingIndication } from './src/components/LoadingIndication';
-import { NativeRouter, Route, Link } from 'react-router-native';
-import {AnonymousHome} from './src/components/Anonymous/AnonymusHome';
+import { NativeRouter } from 'react-router-native';
+import { AnonymousHome } from './src/components/Anonymous/AnonymusHome';
+import { ConsumerHome } from './src/components/consumer/ConsumerHome';
+import { SupplierHome } from './src/components/supplier/SupplierHome';
+import Text from 'react-native-ui-lib/text';
 
 export default function App() {
   const store = React.useMemo<RootStore>(() => new RootStore(), []);
@@ -16,7 +19,13 @@ export default function App() {
           <View style={styles.mainView}>
             <ErrorComponent />
             <LoadingIndication />
-            <AnonymousHome />
+            {store.dataStore.isAnonymous ? <AnonymousHome /> : null}
+            {store.dataStore.user?.type === 'Consumer' ? (
+              <ConsumerHome />
+            ) : null}
+            {store.dataStore.user?.type === 'Supplier' ? (
+              <SupplierHome />
+            ) : null}
           </View>
         </ScrollView>
       </NativeRouter>

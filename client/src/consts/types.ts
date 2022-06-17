@@ -32,4 +32,5 @@ export interface User {
   firstName: string;
   lastName: string;
   new_description: string;
+  type: 'Consumer' | 'Supplier';
 }

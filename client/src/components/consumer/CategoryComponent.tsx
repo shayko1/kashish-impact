@@ -3,8 +3,8 @@ import { observer } from 'mobx-react';
 import { StyleSheet } from 'react-native';
 import View from 'react-native-ui-lib/view';
 import Text from 'react-native-ui-lib/text';
-import Icon from 'react-native-ui-lib/icon';
-import { Assets } from 'react-native-ui-lib';
+// import Icon from 'react-native-ui-lib/icon';
+// import { Assets } from 'react-native-ui-lib';
 import { Category } from '../../consts/types';
 import { useStore } from '../../providers/StoreProvider';
 
@@ -14,7 +14,7 @@ export const CategoryComponent = observer(() => {
   return (
     <>
       <View flex>
-        <Icon margin-30 source={Assets.icons.search} />
+        {/* <Icon margin-30 source={Assets.icons.search} /> */}
         <Text>איך אפשר לעזור לך היום?</Text>
         {categories.map((category) => {
           <View style={styles.intentView} br50 margin-s5 bg-blue40 center>
