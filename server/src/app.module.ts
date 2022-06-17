@@ -2,12 +2,11 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { NotesModule } from './notes/notes.module';
-import { StepsModule } from './steps/steps.module';
-import { StepFieldsModule } from './stepsFields/stepsFields.module';
-import { UsersModule } from './users/users.module';
-import { CategoriesModule } from './categories/categories.module';
-import { SubCategoriesModule } from './subcategories/subcategories.module';
+import { StepsModule } from './components/steps/steps.module';
+import { StepFieldsModule } from './components/steps/stepsFields/stepsFields.module';
+import { UsersModule } from './components/users/users.module';
+import { CategoriesModule } from './components/categories/categories.module';
+import { SubCategoriesModule } from './components/categories/subcategories/subcategories.module';
 require('dotenv').config()
 
 @Module({
@@ -22,7 +21,6 @@ require('dotenv').config()
       "entities": ["dist/**/*.entity{.ts,.js}"],
       "synchronize": true
   }),
-    NotesModule,
     UsersModule,
     StepsModule,
     StepFieldsModule,

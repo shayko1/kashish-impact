@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CategoriesService } from 'src/categories/categories.service';
 
 @Injectable()
 export class MatcherHandler {
