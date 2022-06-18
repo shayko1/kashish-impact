@@ -7,6 +7,8 @@ import { StepFieldsModule } from './components/steps/stepsFields/stepsFields.mod
 import { UsersModule } from './components/users/users.module';
 import { CategoriesModule } from './components/categories/categories.module';
 import { SubCategoriesModule } from './components/categories/subcategories/subcategories.module';
+import { ConsumerInquiriesModule } from './components/consumerinquiries/consumerinquiries.module';
+import { SupplierInquiriesModule } from './components/supplierinquiry/supplierinquiries.module';
 require('dotenv').config()
 
 @Module({
@@ -25,7 +27,9 @@ require('dotenv').config()
     StepsModule,
     StepFieldsModule,
     CategoriesModule,
-    SubCategoriesModule
+    SubCategoriesModule,
+    ConsumerInquiriesModule,
+    SupplierInquiriesModule
   ],
   controllers: [AppController],
   providers: [AppService],

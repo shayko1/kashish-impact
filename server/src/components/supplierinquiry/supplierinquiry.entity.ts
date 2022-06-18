@@ -12,6 +12,7 @@ export class SupplierInquiry extends BaseEntity {
   id: number;
 
   @Column()
+  @ApiProperty()
   @IsNumber()
   userId: number;
 
@@ -25,9 +26,11 @@ export class SupplierInquiry extends BaseEntity {
   subCategoty: SubCategory;
 
   @Column("simple-json")
+  @ApiProperty()
   step_result: {key: string, value: string}
 
   @Column()
+  @ApiProperty()
   @IsNumber()
   status: number; // TODO: should be an enum
 } 

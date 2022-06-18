@@ -12,6 +12,7 @@ export class ConsumerInquiry extends BaseEntity {
   id: number;
 
   @Column()
+  @ApiProperty()
   @IsNumber()
   userId: number;
 
@@ -28,6 +29,7 @@ export class ConsumerInquiry extends BaseEntity {
   step_result: {key: string, value: string}
 
   @Column()
+  @ApiProperty()
   @IsNumber()
   status: number; // TODO: should be an enum
 } 

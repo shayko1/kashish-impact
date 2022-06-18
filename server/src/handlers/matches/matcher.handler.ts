@@ -1,11 +1,13 @@
 import { Injectable } from '@nestjs/common';
+import { ConsumerInquiriesService } from 'src/components/consumerinquiries/consumerinquiries.service';
+import { SupplierInquiriesService } from 'src/components/supplierinquiry/supplierinquiries.service';
 
 @Injectable()
 export class MatcherHandler {
-    private consumerInquiries;
-    private supplierInquiries;
+    private consumerInquiries: ConsumerInquiriesService;
+    private supplierInquiries: SupplierInquiriesService;
 
-    constructor(consumerInquiries: any, supplierInquiries: any) {
+    constructor(consumerInquiries: ConsumerInquiriesService, supplierInquiries: SupplierInquiriesService) {
         this.consumerInquiries = consumerInquiries;
         this.supplierInquiries = supplierInquiries;
     }
