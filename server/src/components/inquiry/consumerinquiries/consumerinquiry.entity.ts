@@ -1,10 +1,10 @@
 import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { IsNumber, IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
-import { Category } from '../categories/category.entity';
-import { SubCategory } from '../categories/subcategories/subcategory.entity';
+import { Category } from '../../categories/category.entity';
+import { SubCategory } from '../../categories/subcategories/subcategory.entity';
 import { Optional } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
-import { StetpResponse } from '../steps/dto/StepResponse';
+import { Status } from '../comoon/status.enum';
 
 @Entity()
 export class ConsumerInquiry extends BaseEntity {
@@ -28,8 +28,11 @@ export class ConsumerInquiry extends BaseEntity {
   @Column("simple-json")
   step_result: {key: string, value: string}
 
-  @Column()
   @ApiProperty()
-  @IsNumber()
-  status: number; // TODO: should be an enum
+  @Column({
+    type: 'enum',
+    enum: Status,
+    default: Status.PENDING
+  })
+  status: Status
 } 
