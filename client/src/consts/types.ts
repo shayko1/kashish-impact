@@ -32,5 +32,9 @@ export interface User {
   firstName: string;
   lastName: string;
   new_description: string;
-  type: 'Consumer' | 'Supplier';
+  type: UserType;
 }
+
+export type NewRecordProcessLocationType = 'First' | 'Category' | 'SubCategory' | 'Steps';
+
+export type UserType = 'Consumer' | 'Supplier';

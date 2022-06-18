@@ -19,8 +19,8 @@ export const defaultSupplierUser = (): User => ({
 export const defaultCategories = (): Category[] => [
   {
     id: 1,
-    description: 'הסעה',
-    name: 'תיאור של ההסעה',
+    description: 'תיאור של ההסעה',
+    name: 'הסעה',
     icon: 'http://',
     subCategories: [
       {
@@ -69,22 +69,22 @@ export const defaultCategories = (): Category[] => [
   },
   {
     id: 2,
-    description: 'משלוח/איסוף',
-    name: 'תיאור של זה',
+    name: 'משלוח/איסוף',
+    description: 'תיאור של זה',
     icon: 'http://',
     subCategories: [],
   },
   {
     id: 3,
-    description: 'ליווי',
-    name: 'תיאור של זה',
+    name: 'ליווי',
+    description: 'תיאור של זה',
     icon: 'http://',
     subCategories: [],
   },
   {
     id: 4,
-    description: 'עזרה בבית',
-    name: 'תיאור של זה',
+    name: 'עזרה בבית',
+    description: 'תיאור של זה',
     icon: 'http://',
     subCategories: [],
   },
