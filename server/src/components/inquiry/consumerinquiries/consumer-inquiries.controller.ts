@@ -9,8 +9,8 @@ import {
   } from '@nestjs/common';
   import { ParseIntPipe } from '@nestjs/common/pipes/parse-int.pipe';
 import { ApiOkResponse, ApiProperty } from '@nestjs/swagger';
-import { ConsumerInquiriesService } from './consumerinquiries.service';
-import { ConsumerInquiry } from './consumerinquiry.entity';
+import { ConsumerInquiriesService } from './consumer-inquiries.service';
+import { ConsumerInquiry } from './consumer-inquiry.entity';
   
   @Controller('consumer/inquieries')
   export class ConsumerInquiriesController {

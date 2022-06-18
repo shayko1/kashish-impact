@@ -7,8 +7,8 @@ import { StepFieldsModule } from './components/steps/stepsFields/stepsFields.mod
 import { UsersModule } from './components/users/users.module';
 import { CategoriesModule } from './components/categories/categories.module';
 import { SubCategoriesModule } from './components/categories/subcategories/subcategories.module';
-import { ConsumerInquiriesModule } from './components/inquiry/consumerinquiries/consumerinquiries.module';
-import { SupplierInquiriesModule } from './components/inquiry/supplierinquiry/supplierinquiries.module';
+import { ConsumerInquiriesModule } from './components/inquiry/consumerinquiries/consumer-inquiries.module';
+import { SupplierInquiriesModule } from './components/inquiry/supplierinquiry/supplier-inquiries.module';
 import { ConfigModule } from '@nestjs/config';
 
 
