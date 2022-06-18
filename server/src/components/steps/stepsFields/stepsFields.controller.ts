@@ -16,8 +16,9 @@ import {
     constructor(private stepFieldsService: StepFieldsService) {}
   
     @Get()
-    findAll() {
-      return this.stepFieldsService.getStepFields();
+    async findAll() {
+      const result = await this.stepFieldsService.getStepFields();
+      return result.map(step => ({}))
     }
   
     @Get(':id')

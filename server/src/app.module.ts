@@ -15,9 +15,9 @@ require('dotenv').config()
       "type": "mysql",
       "host": process.env.HOST,
       "port": 3306,
-      "username": "sql11500189",
-      "password": "wJy2VHl2h7",
-      "database": "sql11500189",
+      "username": "root",
+      "password": "password",
+      "database": "test",
       "entities": ["dist/**/*.entity{.ts,.js}"],
       "synchronize": true
   }),

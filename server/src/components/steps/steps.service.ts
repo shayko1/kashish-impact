@@ -3,21 +3,28 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Step } from './steps.entity';
+import { Category } from '../categories/category.entity';
+import { StetpUpdateRequest } from './dto/StetpUpdateRequest';
 
 @Injectable()
 export class StepsService {
   constructor(
     @InjectRepository(Step) private stepsRepository: Repository<Step>,
+    @InjectRepository(Category) private categoryRepository: Repository<Category>,
   ) {}
   async getSteps(): Promise<Step[]> {
-    return await this.stepsRepository.find();
+    return await this.stepsRepository.find({
+      relations: {
+          category: true,
+      },
+  });
   }
 
   findOne(id: number): Promise<Step> {
     return this.stepsRepository.findOne({ where: {id : id }});
   }
 
-  async createStep(step: Step) {
+  async createStep(step: StetpUpdateRequest) {
     this.stepsRepository.save(step);
   }
 
@@ -25,15 +32,18 @@ export class StepsService {
     await this.stepsRepository.delete(id);
   }
 
-  async editStep(id: number, step: Step): Promise<Step> {
+  async editStep(id: number, stetpUpdateRequest: StetpUpdateRequest): Promise<Step> {
     const editedStep = await this.stepsRepository.findOne({ where: {id : id }});
+    const category = await this.categoryRepository.findOne({ where: {id : stetpUpdateRequest.categoryId }});
     if (!editedStep) {
       throw new NotFoundException('Step is not found');
     }
-    editedStep.orderNumber = step.orderNumber;
-    editedStep.subCategoryId = step.subCategoryId;
-    editedStep.categoryId = step.categoryId;
+
+    editedStep.orderNumber = stetpUpdateRequest.orderNumber;
+    editedStep.subCategoryId = stetpUpdateRequest.subCategoryId;
+    editedStep.category = category
     await editedStep.save();
     return editedStep;
   }
 }
+
