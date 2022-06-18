@@ -1,6 +1,13 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { IsNumber, IsString, MaxLength, MinLength } from 'class-validator';
-import { Category } from '../categories/category.entity'
+import { Category } from '../categories/category.entity';
 import { SubCategory } from '../categories/subcategories/subcategory.entity';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -16,7 +23,7 @@ export class Step extends BaseEntity {
 
   @IsNumber()
   @ApiProperty()
-  @ManyToOne(() => Category, category => category.id)
+  @ManyToOne(() => Category, (category) => category.id)
   category: Category;
 
   @Column()
@@ -26,11 +33,11 @@ export class Step extends BaseEntity {
 
   @IsNumber()
   @ApiProperty()
-  @ManyToOne(() => SubCategory, subCategory => subCategory.id)
+  @ManyToOne(() => SubCategory, (subCategory) => subCategory.id)
   subCategory: SubCategory;
 
   @Column()
   @IsNumber()
   @ApiProperty()
   orderNumber: number;
-} 
+}

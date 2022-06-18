@@ -6,14 +6,15 @@ import { SubCategory } from './subcategory.entity';
 @Injectable()
 export class SubCategoriesService {
   constructor(
-    @InjectRepository(SubCategory) private categoriesRepository: Repository<SubCategory>,
+    @InjectRepository(SubCategory)
+    private categoriesRepository: Repository<SubCategory>,
   ) {}
   async getSubCategories(): Promise<SubCategory[]> {
     return await this.categoriesRepository.find();
   }
 
   findOne(id: number): Promise<SubCategory> {
-    return this.categoriesRepository.findOne({ where: {id : id }});
+    return this.categoriesRepository.findOne({ where: { id: id } });
   }
 
   async createSubCategory(user: SubCategory) {
@@ -24,8 +25,13 @@ export class SubCategoriesService {
     await this.categoriesRepository.delete(id);
   }
 
-  async editSubCategory(id: number, subCategory: SubCategory): Promise<SubCategory> {
-    const editUser = await this.categoriesRepository.findOne({ where: {id : id }});
+  async editSubCategory(
+    id: number,
+    subCategory: SubCategory,
+  ): Promise<SubCategory> {
+    const editUser = await this.categoriesRepository.findOne({
+      where: { id: id },
+    });
     if (!editUser) {
       throw new NotFoundException('User is not found');
     }

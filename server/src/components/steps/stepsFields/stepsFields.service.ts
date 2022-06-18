@@ -1,4 +1,3 @@
-
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -6,20 +5,20 @@ import { StepField } from './stepsFields.entity';
 
 @Injectable()
 export class StepFieldsService {
-
   constructor(
-    @InjectRepository(StepField) private stepFieldsRepository: Repository<StepField>,
+    @InjectRepository(StepField)
+    private stepFieldsRepository: Repository<StepField>,
   ) {}
   async getStepFields(): Promise<StepField[]> {
     return await this.stepFieldsRepository.find();
   }
 
   findOne(id: number): Promise<StepField> {
-    return this.stepFieldsRepository.findOne({ where: {id : id }});
+    return this.stepFieldsRepository.findOne({ where: { id: id } });
   }
 
   getStepsfieldsbyStepid(stepId: number) {
-    this.stepFieldsRepository.findBy({stepId : stepId});
+    this.stepFieldsRepository.findBy({ stepId: stepId });
   }
 
   async createStepField(stepField: StepField) {
@@ -31,7 +30,9 @@ export class StepFieldsService {
   }
 
   async editStepField(id: number, stepField: StepField): Promise<StepField> {
-    const editedStepField = await this.stepFieldsRepository.findOne({ where: {id : id }});
+    const editedStepField = await this.stepFieldsRepository.findOne({
+      where: { id: id },
+    });
     if (!editedStepField) {
       throw new NotFoundException('StepField is not found');
     }

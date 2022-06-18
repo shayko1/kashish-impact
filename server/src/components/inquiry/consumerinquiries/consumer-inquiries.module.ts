@@ -10,4 +10,4 @@ import { ConsumerInquiry } from './consumer-inquiry.entity';
   providers: [ConsumerInquiriesService],
   controllers: [ConsumerInquiriesController],
 })
-export class ConsumerInquiriesModule {} 
+export class ConsumerInquiriesModule {}

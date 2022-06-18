@@ -1,20 +1,20 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm/repository/Repository";
-import { Category } from "./category.entity";
-
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm/repository/Repository';
+import { Category } from './category.entity';
 
 @Injectable()
 export class CategoriesService {
   constructor(
-    @InjectRepository(Category) private categoriesRepository: Repository<Category>,
+    @InjectRepository(Category)
+    private categoriesRepository: Repository<Category>,
   ) {}
   async getCategories(): Promise<Category[]> {
     return await this.categoriesRepository.find();
   }
 
   findOne(id: number): Promise<Category> {
-    return this.categoriesRepository.findOne({ where: {id : id }});
+    return this.categoriesRepository.findOne({ where: { id: id } });
   }
 
   async createCategory(category: Category) {
@@ -26,7 +26,9 @@ export class CategoriesService {
   }
 
   async editCategory(id: number, category: Category): Promise<Category> {
-    const editUser = await this.categoriesRepository.findOne({ where: {id : id }});
+    const editUser = await this.categoriesRepository.findOne({
+      where: { id: id },
+    });
     if (!editUser) {
       throw new NotFoundException('User is not found');
     }
@@ -35,4 +37,4 @@ export class CategoriesService {
     await editUser.save();
     return editUser;
   }
-} 
+}

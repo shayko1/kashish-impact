@@ -6,40 +6,37 @@ import { CronJob } from 'cron';
 import { MatcherHandler } from './handlers/matches/matcher.handler';
 import { threadId } from 'worker_threads';
 
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
-  .setTitle('Kashish Impact Doc')
-  .setDescription('API description')
-  .setVersion('1.0')
-  .addTag('kashih')
-  .build();
+    .setTitle('Kashish Impact Doc')
+    .setDescription('API description')
+    .setVersion('1.0')
+    .addTag('kashih')
+    .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
-  
+
   // */1 * * * *  => meaans cron job will be executes every 1 minute
-  const x = new MatcherHandler(1 as any, 2 as any); 
+  const x = new MatcherHandler(1 as any, 2 as any);
   //TODO: inject real instances of supplier and customer in order to get data from DB
   const cronJob = new CronJob('*/1 * * * *', async () => {
     try {
-      let dateTime = new Date()
+      const dateTime = new Date();
       console.log(dateTime + 'Kasish Impact !');
-      console.log("Thread in main: " + threadId)
+      console.log('Thread in main: ' + threadId);
       x.handle();
-
     } catch (e) {
       console.error(e);
     }
   });
-  
+
   // Start job
   if (!cronJob.running) {
     cronJob.start();
   }
 
-  console.log("enviroment:" + JSON.stringify(process.env, null, 2));
-
+  console.log('enviroment:' + JSON.stringify(process.env, null, 2));
 
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors();

@@ -11,27 +11,26 @@ import { ConsumerInquiriesModule } from './components/inquiry/consumerinquiries/
 import { SupplierInquiriesModule } from './components/inquiry/supplierinquiry/supplier-inquiries.module';
 import { ConfigModule } from '@nestjs/config';
 
-
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      "type": "mysql",
-      "host": process.env.HOST,
-      "port": 3306,
-      "username": "root",
-      "password": "password",
-      "database": "test",
-      "entities": ["dist/**/*.entity{.ts,.js}"],
-      "synchronize": true
-  }),
-    ConfigModule.forRoot({isGlobal: true}),
+      type: 'mysql',
+      host: process.env.HOST,
+      port: 3306,
+      username: 'root',
+      password: 'password',
+      database: 'test',
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      synchronize: true,
+    }),
+    ConfigModule.forRoot({ isGlobal: true }),
     UsersModule,
     StepsModule,
     StepFieldsModule,
     CategoriesModule,
     SubCategoriesModule,
     ConsumerInquiriesModule,
-    SupplierInquiriesModule
+    SupplierInquiriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
