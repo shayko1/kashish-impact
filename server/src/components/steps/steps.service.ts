@@ -10,7 +10,6 @@ import { StetpUpdateRequest } from './dto/StetpUpdateRequest';
 export class StepsService {
   constructor(
     @InjectRepository(Step) private stepsRepository: Repository<Step>,
-    @InjectRepository(Category) private categoryRepository: Repository<Category>,
   ) {}
   async getSteps(): Promise<Step[]> {
     return await this.stepsRepository.find({
@@ -34,14 +33,13 @@ export class StepsService {
 
   async editStep(id: number, stetpUpdateRequest: StetpUpdateRequest): Promise<Step> {
     const editedStep = await this.stepsRepository.findOne({ where: {id : id }});
-    const category = await this.categoryRepository.findOne({ where: {id : stetpUpdateRequest.categoryId }});
     if (!editedStep) {
       throw new NotFoundException('Step is not found');
     }
 
     editedStep.orderNumber = stetpUpdateRequest.orderNumber;
     editedStep.subCategoryId = stetpUpdateRequest.subCategoryId;
-    editedStep.category = category
+    editedStep.categoryId = stetpUpdateRequest.categoryId;
     await editedStep.save();
     return editedStep;
   }
