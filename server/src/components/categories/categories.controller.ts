@@ -8,7 +8,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { ParseIntPipe } from '@nestjs/common/pipes/parse-int.pipe';
-import { ApiOkResponse, ApiProperty } from '@nestjs/swagger';
+import { ApiOkResponse } from '@nestjs/swagger';
 import { CategoriesService } from './categories.service';
 import { Category } from './category.entity';
 
