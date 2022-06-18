@@ -1,7 +1,6 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { Step } from '../steps/steps.entity';
 
 
 @Entity()
@@ -28,6 +27,4 @@ export class Category extends BaseEntity {
   @ApiProperty()
   icon: string;
 
-  @OneToMany(() => Step, (step) => step.category)
-  steps: Step[]
 } 

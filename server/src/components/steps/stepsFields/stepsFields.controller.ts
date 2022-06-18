@@ -16,14 +16,18 @@ import {
     constructor(private stepFieldsService: StepFieldsService) {}
   
     @Get()
-    async findAll() {
-      const result = await this.stepFieldsService.getStepFields();
-      return result.map(step => ({}))
+    findAll() {
+      return this.stepFieldsService.getStepFields();
     }
   
     @Get(':id')
     findOne(@Param('id', ParseIntPipe) id) {
       return this.stepFieldsService.findOne(id);
+    }
+
+    @Get('/step_fields/:stepId')
+    findAllfileds(@Param('stepId', ParseIntPipe) id) {
+      return this.stepFieldsService.getStepsfieldsbyStepid(id);
     }
   
     @Post() create(@Body() stepField: StepField) {

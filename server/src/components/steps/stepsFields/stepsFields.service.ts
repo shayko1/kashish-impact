@@ -6,6 +6,7 @@ import { StepField } from './stepsFields.entity';
 
 @Injectable()
 export class StepFieldsService {
+
   constructor(
     @InjectRepository(StepField) private stepFieldsRepository: Repository<StepField>,
   ) {}
@@ -15,6 +16,10 @@ export class StepFieldsService {
 
   findOne(id: number): Promise<StepField> {
     return this.stepFieldsRepository.findOne({ where: {id : id }});
+  }
+
+  getStepsfieldsbyStepid(stepId: number) {
+    this.stepFieldsRepository.findBy({stepId : stepId});
   }
 
   async createStepField(stepField: StepField) {

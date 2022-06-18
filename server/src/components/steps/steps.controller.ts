@@ -23,7 +23,7 @@ import { StetpResponse } from './dto/StepResponse';
       const result = await this.stepsService.getSteps();
       return result.map(step => ({id : step.id,
          category: step.category,
-          subCategoryId : step.subCategoryId,
+          subCategory : step.subCategory,
           orderNumber: step.orderNumber}))
     }
   

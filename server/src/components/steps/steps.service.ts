@@ -15,6 +15,7 @@ export class StepsService {
     return await this.stepsRepository.find({
       relations: {
           category: true,
+          subCategory: true
       },
   });
   }

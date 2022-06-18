@@ -8,7 +8,7 @@ import { Step } from '../steps/steps.entity';
 
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Category]), TypeOrmModule.forFeature([Step])],
+  imports: [TypeOrmModule.forFeature([Category])],
   providers: [CategoriesService],
   controllers: [CategoriesController],
 })
