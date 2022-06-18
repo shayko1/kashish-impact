@@ -9,7 +9,8 @@ import { CategoriesModule } from './components/categories/categories.module';
 import { SubCategoriesModule } from './components/categories/subcategories/subcategories.module';
 import { ConsumerInquiriesModule } from './components/consumerinquiries/consumerinquiries.module';
 import { SupplierInquiriesModule } from './components/supplierinquiry/supplierinquiries.module';
-require('dotenv').config()
+import { ConfigModule } from '@nestjs/config';
+
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ require('dotenv').config()
       "entities": ["dist/**/*.entity{.ts,.js}"],
       "synchronize": true
   }),
+    ConfigModule.forRoot({isGlobal: true}),
     UsersModule,
     StepsModule,
     StepFieldsModule,

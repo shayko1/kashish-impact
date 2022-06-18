@@ -6,7 +6,6 @@ import { CronJob } from 'cron';
 import { MatcherHandler } from './handlers/matches/matcher.handler';
 import { threadId } from 'worker_threads';
 
-require('dotenv').config()
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
