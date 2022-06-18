@@ -10,8 +10,8 @@ import {
   import { ParseIntPipe } from '@nestjs/common/pipes/parse-int.pipe';
   import { Step } from './steps.entity';
   import { StepsService } from './steps.service';
-  import { StetpUpdateRequest } from './dto/StetpUpdateRequest';
-import { StetpResponse } from './dto/StepResponse';
+  import { StetpUpdateRequest } from './dto/step-upfate-request.dto';
+import { StetpResponse } from './dto/step-response.dto';
 
   
   @Controller('steps')

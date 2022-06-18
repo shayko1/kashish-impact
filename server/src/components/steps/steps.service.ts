@@ -4,8 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Step } from './steps.entity';
 import { Category } from '../categories/category.entity';
-import { StetpUpdateRequest } from './dto/StetpUpdateRequest';
-
+import { StetpUpdateRequest } from './dto/step-upfate-request.dto';
 @Injectable()
 export class StepsService {
   constructor(

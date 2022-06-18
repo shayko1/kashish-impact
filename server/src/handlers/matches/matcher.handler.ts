@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { ConsumerInquiriesService } from 'src/components/consumerinquiries/consumerinquiries.service';
-import { SupplierInquiriesService } from 'src/components/supplierinquiry/supplierinquiries.service';
+import { ConsumerInquiriesService } from '../../components/inquiry/consumerinquiries/consumerinquiries.service'
+import { SupplierInquiriesService } from '../..//components/inquiry/supplierinquiry/supplierinquiries.service';
 
 @Injectable()
 export class MatcherHandler {
