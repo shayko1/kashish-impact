@@ -10,11 +10,11 @@ export const UserInfoPage = observer(() => {
   const INPUT_SPACING = 10;
   const { uiStore, dataStore } = useStore();
   return (
-    <View style={{ flex: 1, width: '100%' }} margin-s5>
+    <View style={{ flex: 1, width: '100%', padding: 20 }}>
       <View center>
         <TextField
           text70
-          width="90%"
+          width="100%"
           containerStyle={{ marginBottom: INPUT_SPACING }}
           title="First Name"
           useTopErrors
@@ -24,7 +24,7 @@ export const UserInfoPage = observer(() => {
         />
         <TextField
           text70
-          width="90%"
+          width="100%"
           containerStyle={{ marginBottom: INPUT_SPACING }}
           title="Family Name"
           useTopErrors
@@ -34,7 +34,7 @@ export const UserInfoPage = observer(() => {
         />
         <TextField
           text70
-          width="90%"
+          width="100%"
           containerStyle={{ marginBottom: INPUT_SPACING }}
           title="Phone Number"
           useTopErrors
@@ -44,7 +44,7 @@ export const UserInfoPage = observer(() => {
         />
         <TextField
           text70
-          width="90%"
+          width="100%"
           containerStyle={{ marginBottom: INPUT_SPACING }}
           title="Description"
           multiline
@@ -54,24 +54,22 @@ export const UserInfoPage = observer(() => {
         />
       </View>
       <View flex bottom>
-        <View flex bottom row center>
-          <NavigationButton
-            label={'next'}
-            onPress={() => {
-              if (
-                !!dataStore.flowInfo.user.firstName &&
-                !!dataStore.flowInfo.user.lastName &&
-                !!dataStore.flowInfo.user.phone_number
-              ) {
-                uiStore.setApplicationMode(ApplicationMode.CATEGORIES);
-              }
-            }}
-          />
-          <NavigationButton
-            label={'back'}
-            onPress={() => uiStore.clickCategoryPrevButton()}
-          />
-        </View>
+        <NavigationButton
+          label={'next'}
+          onPress={() => {
+            if (
+              !!dataStore.flowInfo.user.firstName &&
+              !!dataStore.flowInfo.user.lastName &&
+              !!dataStore.flowInfo.user.phone_number
+            ) {
+              uiStore.setApplicationMode(ApplicationMode.CATEGORIES);
+            }
+          }}
+        />
+        <NavigationButton
+          label={'back'}
+          onPress={() => uiStore.clickCategoryPrevButton()}
+        />
       </View>
     </View>
   );
