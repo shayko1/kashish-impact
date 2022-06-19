@@ -51,7 +51,7 @@ export const TimeRange = observer(({ field }: { field: StepField }) => {
   };
 
   React.useEffect(() => {
-    updateDate(now, now, new Date(now.setHours(now.getHours() + 2)));
+    updateDate(now, now, new Date(new Date(now).setHours(now.getHours() + 2)));
   }, []);
 
   return (
@@ -81,7 +81,7 @@ export const TimeRange = observer(({ field }: { field: StepField }) => {
           mode={'time'}
           title={'To'}
           placeholder={'Select time'}
-          value={new Date(now.setHours(now.getHours() + 2))}
+          value={new Date(new Date(now).setHours(now.getHours() + 2))}
           onChange={(date) => {
             updateTime(undefined, date);
           }}
