@@ -7,7 +7,7 @@ import Text from 'react-native-ui-lib/text';
 export const InquirySearch = observer(() => {
     const { dataStore } = useStore();
     console.log(dataStore.flowInfo.fields);
-    console.log(dataStore.flowInfo.category);
+    console.log(dataStore.flowInfo.categoryId);
     console.log(dataStore.flowInfo.user);
     return (
         <View style={{ flex: 1, width: "100%" }}>
@@ -16,11 +16,9 @@ export const InquirySearch = observer(() => {
             </Text>
             <Text>
                 {JSON.stringify(dataStore.flowInfo.fields)}
-
             </Text>
             <Text>
-                {JSON.stringify(dataStore.flowInfo.category)}
-
+                {JSON.stringify(dataStore.flowInfo.categoryId)}
             </Text>
             <Text>
                 {JSON.stringify(dataStore.flowInfo.user)}

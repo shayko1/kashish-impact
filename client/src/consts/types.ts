@@ -1,9 +1,9 @@
 import { UserType } from './enums';
 
 export interface FlowInfo {
-  category?: Category;
+  categoryId?: string;
   user?: User;
-  fields?: {[key: string]: any};
+  fields?: { [key: string]: any };
 }
 
 export interface Category {

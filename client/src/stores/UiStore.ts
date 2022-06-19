@@ -68,11 +68,9 @@ export class UIStore {
   }
 
   clickStepsNextButton = () => {
-    console.log("this.stepsState.activeStepNumbe", this.stepsState.activeStepNumber);
-    console.log("this.stepsState.steps.length-1", (this.stepsState.steps.length - 1));
     const isLastStep = this.stepsState.activeStepNumber === (this.stepsState.steps.length - 1);
-    console.log("isLastStep", isLastStep);
     if (isLastStep) {
+      this.rootStore.dataStore.flowInfo.categoryId = this.categoryState.selectedCategory.id;
       this.setApplicationMode(ApplicationMode.INQUIRY_SEARCH);
     } else {
       this.stepsState.activeStepNumber++;
