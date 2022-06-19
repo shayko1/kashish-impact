@@ -4,27 +4,50 @@ import { observer } from 'mobx-react';
 import View from 'react-native-ui-lib/view';
 import { Card } from 'react-native-ui-lib';
 import { ApplicationMode, UserType } from '../consts/enums';
+import Text from 'react-native-ui-lib/text';
 
+const USER_TYPE_CONTENT = {
+  [UserType.CONSUMER]: [
+    { text: 'I need help', text30: true, $textDefault: true },
+    {
+      text: '222 Join Old The Town Barbershop Official Store. Download the Wix app to...',
+      text80: true,
+      $textDefault: true
+    }
+  ],
+  [UserType.SUPPLIER]: [
+    { text: 'I want to help', text30: true, $textDefault: true },
+    {
+      text: '222 Join Old The Town Barbershop Official Store. Download the Wix app to...',
+      text80: true,
+      $textDefault: true
+    }
+  ]
+}
 export const AnonymusLandingPage = observer(() => {
   return (
-    <View style={{ flex: 1, width: '100%' }}>
-      <MyIntentCard text="I need help" userType={UserType.CONSUMER} />
-      <MyIntentCard text="I want to help" userType={UserType.SUPPLIER} />
-    </View>
+    <>
+      <View center style={{ width: '100%' }}>
+        <Text text60>What Are You Looking For?</Text>
+      </View>
+      <View style={{ flex: 1, width: '100%' }}>
+        <MyIntentCard userType={UserType.CONSUMER} />
+        <MyIntentCard userType={UserType.SUPPLIER} />
+      </View>
+    </>
   );
 });
 
 const MyIntentCardCmp = ({
-  text,
   userType,
 }: {
-  text: string;
   userType: UserType;
 }) => {
   const { uiStore, dataStore } = useStore();
+  const content = USER_TYPE_CONTENT[userType];
   return (
     <Card
-      style={{ flex: 1, backgroundColor: 'lightblue' }}
+      style={{ flex: 1, borderWidth: 1 }}
       center
       marginL-20
       marginR-20
@@ -37,7 +60,7 @@ const MyIntentCardCmp = ({
       }}
     >
       <Card.Section
-        content={[{ text, text60: true, grey10: true }]}
+        content={content}
         contentStyle={{ alignItems: 'center' }}
       />
     </Card>
