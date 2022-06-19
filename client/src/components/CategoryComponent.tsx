@@ -10,35 +10,45 @@ import { UserType } from '../consts/enums';
 import { NavigationButton } from './NavigationButton';
 
 export const CategoryComponent = observer(() => {
-  const { uiStore: { setSelectedCategory, clickCategoryPrevButton, categories, userType } } = useStore();
-  const headerTitle = userType === UserType.CONSUMER ? "איך אפשר לעזור לך היום?" : "במה תרצה לעזור?"
+  const {
+    uiStore: {
+      setSelectedCategory,
+      clickCategoryPrevButton,
+      categories,
+      userType,
+    },
+  } = useStore();
+  const headerTitle =
+    userType === UserType.CONSUMER
+      ? 'How can we help?'
+      : 'How can you help?';
   return (
     <>
       <View style={styles.categoryView}>
         <View>
-          <Icon
-            margin-30
-            onPress={() => console.warn('press')}
-          />
-          <Text>{headerTitle}</Text>
+          <Icon margin-30 onPress={() => console.warn('press')} />
+          <Text text50>{headerTitle}</Text>
         </View>
         <View center>
           {categories.map((category) => (
             <TouchableOpacity
               key={category.id}
               onPress={() => {
-                setSelectedCategory(category)
+                setSelectedCategory(category);
               }}
             >
               <View style={styles.intentView} br50 margin-s5 bg-blue50 center>
-                <Text>{category.name}</Text>
-                <Text>{category.description}</Text>
+                <Text text60>{category.name}</Text>
+                <Text text70>{category.description}</Text>
               </View>
             </TouchableOpacity>
           ))}
         </View>
         <View>
-          <NavigationButton label={'אחורה'} onPress={() => clickCategoryPrevButton()} />
+          <NavigationButton
+            label={'אחורה'}
+            onPress={() => clickCategoryPrevButton()}
+          />
         </View>
       </View>
     </>
@@ -57,5 +67,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-

@@ -9,31 +9,51 @@ import { StepField } from '../../consts/types';
 export const TimeRange = observer(({ field }: { field: StepField }) => {
   const { dataStore } = useStore();
   const now = new Date(new Date(new Date().setMinutes(0)).setSeconds(0));
-  const [date, setDate] = React.useState(now);
-  const [fromTime, setFromTime] = React.useState(now);
-  const [toTime, setToTime] = React.useState(
-    new Date(now.setHours(now.getHours() + 2)),
-  );
 
-  const updateDate = () => {
+  const updateDate = (date?: Date, fromTime?: Date, toTime?: Date) => {
     dataStore.flowInfo.fields[field.id] = {
       from: new Date(
-        new Date(date.setHours(fromTime.getHours())).setMinutes(
-          fromTime.getMinutes(),
-        ),
+        fromTime
+          ? new Date(date.setHours(fromTime.getHours())).setMinutes(
+              fromTime.getMinutes(),
+            )
+          : date,
       ),
       to: new Date(
-        new Date(date.setHours(toTime.getHours())).setMinutes(
-          toTime.getMinutes(),
-        ),
+        toTime
+          ? new Date(date.setHours(toTime.getHours())).setMinutes(
+              toTime.getMinutes(),
+            )
+          : date,
       ),
     };
     console.warn({ data: dataStore.flowInfo.fields[field.id] });
   };
 
+  const updateTime = (fromTime?: Date, toTime?: Date) => {
+    if (fromTime) {
+      const date = dataStore.flowInfo.fields[field.id]['from'];
+      dataStore.flowInfo.fields[field.id]['from'] = new Date(
+        new Date(date.setHours(fromTime.getHours())).setMinutes(
+          fromTime.getMinutes(),
+        ),
+      );
+    }
+    if (toTime) {
+      const date = dataStore.flowInfo.fields[field.id]['to'];
+      dataStore.flowInfo.fields[field.id]['to'] = new Date(
+        new Date(date.setHours(toTime.getHours())).setMinutes(
+          toTime.getMinutes(),
+        ),
+      );
+    }
+    console.warn({ data: dataStore.flowInfo.fields[field.id] });
+  };
+
   React.useEffect(() => {
-    updateDate();
+    updateDate(now, now, new Date(now.setHours(now.getHours() + 2)));
   }, []);
+
   return (
     <>
       <View flex>
@@ -45,8 +65,7 @@ export const TimeRange = observer(({ field }: { field: StepField }) => {
           dateFormat={'MMM D, YYYY'}
           value={now}
           onChange={(date) => {
-            setDate(date);
-            updateDate();
+            updateDate(date, undefined, undefined);
           }}
         />
         <DateTimePicker
@@ -55,8 +74,7 @@ export const TimeRange = observer(({ field }: { field: StepField }) => {
           placeholder={'Select time'}
           value={now}
           onChange={(date) => {
-            setFromTime(date);
-            updateDate();
+            updateTime(date, undefined);
           }}
         />
         <DateTimePicker
@@ -65,8 +83,7 @@ export const TimeRange = observer(({ field }: { field: StepField }) => {
           placeholder={'Select time'}
           value={new Date(now.setHours(now.getHours() + 2))}
           onChange={(date) => {
-            setToTime(date);
-            updateDate();
+            updateTime(undefined, date);
           }}
         />
       </View>

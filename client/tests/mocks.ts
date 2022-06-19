@@ -24,15 +24,42 @@ export const defaultCategories = (): Category => {
     id: 'root',
     subCategories: [
       {
-        id: '1',
-        description: 'תיאור של ההסעה',
-        name: 'הסעה',
+        id: '11',
+        name: 'Help @ Home',
+        description: 'Need assistance in the day to day tasks',
         icon: 'http://',
         steps: [
           {
             id: '3',
             orderNumber: 1,
-            name: 'איפה ומתי תרצה לעזור?',
+            name: 'Where & When do you want to assist ?',
+            fields: [
+              {
+                id: '4',
+                orderNumber: 1,
+                componentName: ComponentType.LOCATION_TO,
+                additionalInfo: null,
+              },
+              {
+                id: '8',
+                orderNumber: 1,
+                componentName: ComponentType.TIME_RANGE,
+                additionalInfo: null,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: '1',
+        description: 'Help with transformation',
+        name: 'Transformation',
+        icon: 'http://',
+        steps: [
+          {
+            id: '3',
+            orderNumber: 1,
+            name: 'Where & When do you want to assist ?',
             fields: [
               {
                 id: '4',
@@ -70,44 +97,17 @@ export const defaultCategories = (): Category => {
       },
       {
         id: '9',
-        name: 'משלוח/איסוף',
-        description: 'תיאור של זה',
+        name: 'Deliver / Collect',
+        description: 'Help by deliver or collect stuff',
         icon: 'http://',
         subCategories: [],
       },
       {
         id: '10',
-        name: 'ליווי',
-        description: 'תיאור של זה',
+        name: 'Walk with',
+        description: 'Help by joining for day to day task outside the house',
         icon: 'http://',
         subCategories: [],
-      },
-      {
-        id: '11',
-        name: 'עזרה בבית',
-        description: 'תיאור של זה',
-        icon: 'http://',
-        steps: [
-          {
-            id: '3',
-            orderNumber: 1,
-            name: 'איפה ומתי תרצה לעזור?',
-            fields: [
-              {
-                id: '4',
-                orderNumber: 1,
-                componentName: ComponentType.LOCATION_TO,
-                additionalInfo: null,
-              },
-              {
-                id: '8',
-                orderNumber: 1,
-                componentName: ComponentType.TIME_RANGE,
-                additionalInfo: null,
-              },
-            ],
-          },
-        ],
       },
     ],
   };
