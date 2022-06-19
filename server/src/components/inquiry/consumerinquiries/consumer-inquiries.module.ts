@@ -9,5 +9,6 @@ import { ConsumerInquiry } from './consumer-inquiry.entity';
   imports: [TypeOrmModule.forFeature([ConsumerInquiry])],
   providers: [ConsumerInquiriesService],
   controllers: [ConsumerInquiriesController],
+  exports: [ConsumerInquiriesService]
 })
 export class ConsumerInquiriesModule {}

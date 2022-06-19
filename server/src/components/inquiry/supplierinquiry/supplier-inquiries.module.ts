@@ -9,5 +9,6 @@ import { SupplierInquiry } from './supplier-inquiry.entity';
   imports: [TypeOrmModule.forFeature([SupplierInquiry])],
   providers: [SupplierInquiriesService],
   controllers: [SupplierInquiriesController],
+  exports: [SupplierInquiriesService]
 })
     export class SupplierInquiriesModule {}
