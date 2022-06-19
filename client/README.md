@@ -53,3 +53,4 @@ In order to add the app to google play:
 - Add a new user to Google Play console.
 - Create a app_00..000.json auth file and use it during submit process.
 - Build project (eas build --platform android) -> an .aab file with be generated.
+- Because of an error, `eas submit` is not working (need to check...). In order to publish manually (on testing mode) go to ```https://play.google.com/console/u/1/developers/6636937385538026181/app/4973852792863535591/tracks/internal-testing?tab=testers```
