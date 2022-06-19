@@ -41,7 +41,7 @@ export class MatchesService {
     return editedMatch;
   }
 
-  @Cron(CronExpression.EVERY_30_SECONDS)
+  @Cron(CronExpression.EVERY_10_MINUTES)
   handleCron() {
     this.matchesHandler.handle();
   }

@@ -19,4 +19,4 @@ import { MatchesService } from './matches.service';
     ],
     controllers: [MatchesController]
 })
-export class MatchesModule { }
+export class MatchesModule {}

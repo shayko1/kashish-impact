@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { IsNumber, IsString, MaxLength, MinLength } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 @Entity()
 export class StepField extends BaseEntity {
