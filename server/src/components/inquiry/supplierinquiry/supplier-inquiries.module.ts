@@ -10,4 +10,4 @@ import { SupplierInquiry } from './supplier-inquiry.entity';
   providers: [SupplierInquiriesService],
   controllers: [SupplierInquiriesController],
 })
-export class SupplierInquiriesModule {}
+    export class SupplierInquiriesModule {}

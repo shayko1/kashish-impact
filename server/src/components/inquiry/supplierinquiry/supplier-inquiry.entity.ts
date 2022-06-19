@@ -3,17 +3,9 @@ import {
   Column,
   Entity,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import {
-  IsNumber,
-  IsString,
-  Max,
-  MaxLength,
-  Min,
-  MinLength,
-} from 'class-validator';
+import { IsNumber } from 'class-validator';
 import { Optional } from '@nestjs/common';
 import { Category } from '../../categories/category.entity';
 import { SubCategory } from '../../categories/subcategories/subcategory.entity';
