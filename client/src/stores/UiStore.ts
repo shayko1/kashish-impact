@@ -67,11 +67,19 @@ export class UIStore {
     this.applicationMode = applicationMode;
   }
 
-  clickStepsWizardNext = () => {
-    this.stepsState.activeStepNumber++;
+  clickStepsNextButton = () => {
+    console.log("this.stepsState.activeStepNumbe", this.stepsState.activeStepNumber);
+    console.log("this.stepsState.steps.length-1", (this.stepsState.steps.length - 1));
+    const isLastStep = this.stepsState.activeStepNumber === (this.stepsState.steps.length - 1);
+    console.log("isLastStep", isLastStep);
+    if (isLastStep) {
+      this.setApplicationMode(ApplicationMode.INQUIRY_SEARCH);
+    } else {
+      this.stepsState.activeStepNumber++;
+    }
   }
 
-  clickStepsWizardPrev = () => {
+  clickStepsPrevButton = () => {
     if (this.stepsState.activeStepNumber === 0) {
       this.clickCategoryPrevButton();
       this.setApplicationMode(ApplicationMode.CATEGORIES);

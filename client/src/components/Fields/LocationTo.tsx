@@ -5,11 +5,17 @@ import Text from 'react-native-ui-lib/text';
 import { StyleSheet } from 'react-native';
 import { useStore } from '../../providers/StoreProvider';
 import * as Location from 'expo-location';
+import { RadioButton, RadioGroup, TextField } from 'react-native-ui-lib';
+import { StepField } from '../../consts/types';
 
-export const LocationTo = observer(() => {
+
+type LocationOption = 'currentLocation' | 'specificLocation';
+export const LocationTo = observer(({ field }: { field: StepField }) => {
   const { uiStore: { activeStep, setErrorState } } = useStore();
+  const [locationOption, setLocationOption] = React.useState<LocationOption>('currentLocation');
   const [location, setLocation] = React.useState(null);
   const [errorMsg, setErrorMsg] = React.useState(null);
+  const { dataStore } = useStore();
   React.useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -20,9 +26,14 @@ export const LocationTo = observer(() => {
       }
 
       let location = await Location.getCurrentPositionAsync({});
+      dataStore.flowInfo.fields[field.id] = JSON.stringify(location);
       setLocation(location);
     })();
   }, []);
+
+  // React.useEffect(() => {
+  //   dataStore.flowInfo.fields[field.id] = JSON.stringify(location);
+  // }, [location]);
 
   let text = 'Waiting..';
   if (errorMsg) {
@@ -34,7 +45,22 @@ export const LocationTo = observer(() => {
   return (
     <>
       <View>
-        <Text>{text}</Text>
+        <Text>Where?</Text>
+        <RadioGroup initialValue={locationOption} onValueChange={(value) => setLocationOption(value)}>
+          <RadioButton containerStyle={{ marginVertical: 10 }} value={'currentLocation'} label={'My current location'} />
+          <RadioButton containerStyle={{ marginVertical: 10 }} value={'specificLocation'} label={"I'll write the address"} />
+        </RadioGroup>
+        {locationOption === 'specificLocation' && (
+          <TextField
+            placeholder={'Address'}
+            floatingPlaceholder
+            onChangeText={() => console.log('changed')}
+            enableErrors
+            validate={['required']}
+            validationMessage={['Field is required']}
+            showCharCounter
+            maxLength={30}
+          />)}
       </View>
     </>
   );

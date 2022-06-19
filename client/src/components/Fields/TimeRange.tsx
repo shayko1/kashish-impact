@@ -5,6 +5,7 @@ import { StyleSheet } from 'react-native';
 import { useStore } from '../../providers/StoreProvider';
 import { DateTimePicker } from 'react-native-ui-lib';
 import { StepField } from '../../consts/types';
+import Text from 'react-native-ui-lib/text';
 
 export const TimeRange = observer(({ field }: { field: StepField }) => {
   const { dataStore } = useStore();
@@ -15,15 +16,15 @@ export const TimeRange = observer(({ field }: { field: StepField }) => {
       from: new Date(
         fromTime
           ? new Date(date.setHours(fromTime.getHours())).setMinutes(
-              fromTime.getMinutes(),
-            )
+            fromTime.getMinutes(),
+          )
           : date,
       ),
       to: new Date(
         toTime
           ? new Date(date.setHours(toTime.getHours())).setMinutes(
-              toTime.getMinutes(),
-            )
+            toTime.getMinutes(),
+          )
           : date,
       ),
     };
@@ -51,15 +52,17 @@ export const TimeRange = observer(({ field }: { field: StepField }) => {
   };
 
   React.useEffect(() => {
-    updateDate(now, now, new Date(new Date(now).setHours(now.getHours() + 2)));
+    //updateDate(now, now, new Date(new Date(now).setHours(now.getHours() + 2)));
   }, []);
 
   return (
     <>
-      <View flex>
+      <View flex style={{ width: '100%' }}>
+        <Text>When?</Text>
         <DateTimePicker
           // @ts-expect-error
           containerStyle={{ marginVertical: 10 }}
+          style={{ width: '100%' }}
           title={'Date'}
           placeholder={'Select a date'}
           dateFormat={'MMM D, YYYY'}
@@ -69,6 +72,7 @@ export const TimeRange = observer(({ field }: { field: StepField }) => {
           }}
         />
         <DateTimePicker
+          style={{ width: '100%' }}
           mode={'time'}
           title={'From'}
           placeholder={'Select time'}
@@ -78,6 +82,7 @@ export const TimeRange = observer(({ field }: { field: StepField }) => {
           }}
         />
         <DateTimePicker
+          style={{ width: '100%' }}
           mode={'time'}
           title={'To'}
           placeholder={'Select time'}

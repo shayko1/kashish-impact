@@ -6,7 +6,7 @@ import { RootStore } from './Store';
 
 export class DataStore {
   public user?: User;
-  public flowInfo: FlowInfo = {};
+  public flowInfo: FlowInfo = { category: null, user: null, fields: {} };
   public categories: Category;
   constructor(public readonly rootStore: RootStore) {
     this.categories = defaultCategories();

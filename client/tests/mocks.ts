@@ -35,13 +35,13 @@ export const defaultCategories = (): Category => {
             name: 'Where & When do you want to assist ?',
             fields: [
               {
-                id: '4',
+                id: ComponentType.LOCATION_TO,
                 orderNumber: 1,
                 componentName: ComponentType.LOCATION_TO,
                 additionalInfo: null,
               },
               {
-                id: '8',
+                id: ComponentType.TIME_RANGE,
                 orderNumber: 1,
                 componentName: ComponentType.TIME_RANGE,
                 additionalInfo: null,
@@ -62,21 +62,16 @@ export const defaultCategories = (): Category => {
             name: 'Where & When do you want to assist ?',
             fields: [
               {
-                id: '4',
+                id: ComponentType.LOCATION_FROM_AND_TO,
                 orderNumber: 1,
                 componentName: ComponentType.LOCATION_FROM_AND_TO,
                 additionalInfo: null,
               },
               {
-                id: '5',
+                id: ComponentType.LOCATION_TO,
                 orderNumber: 2,
                 componentName: ComponentType.LOCATION_TO,
                 additionalInfo: 'add-current-location',
-              },
-              {
-                id: '6',
-                orderNumber: 3,
-                componentName: ComponentType.LOCATION_TO,
               },
             ],
           },
@@ -86,7 +81,7 @@ export const defaultCategories = (): Category => {
             name: '',
             fields: [
               {
-                id: '8',
+                id: ComponentType.TIME_RANGE,
                 orderNumber: 1,
                 componentName: ComponentType.TIME_RANGE,
                 additionalInfo: null,
