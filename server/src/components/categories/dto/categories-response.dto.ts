@@ -1,4 +1,4 @@
-import { StetpResponse } from 'src/components/steps/dto/step-response.dto';
+import { StepResponse } from 'src/components/steps/dto/step-response.dto';
 
 export interface CategoriesResponse {
   id: string;
@@ -6,7 +6,7 @@ export interface CategoriesResponse {
   description?: string;
   icon?: string;
   subCategories?: SubCategoriesResponse[];
-  steps?: StetpResponse[];
+  steps?: StepResponse[];
 }
 
 export interface SubCategoriesResponse {
@@ -14,5 +14,5 @@ export interface SubCategoriesResponse {
   name?: string;
   description?: string;
   icon?: string;
-  steps?: StetpResponse[];
+  steps?: StepResponse[];
 }

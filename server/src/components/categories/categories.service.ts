@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm/repository/Repository';
+import { StepResponse } from '../steps/dto/step-response.dto';
 import { StepsService } from '../steps/steps.service';
 import { Category } from './category.entity';
 import { CategoriesResponse } from './dto/categories-response.dto';
@@ -13,38 +14,30 @@ export class CategoriesService {
     private readonly stepService: StepsService,
   ) {}
   async getCategories(): Promise<CategoriesResponse[]> {
-    const result = await this.categoriesRepository.find({
+    let steps: StepResponse[];
+    const finalResults = [];
+    const categories = await this.categoriesRepository.find({
       relations: {
         subCategories: true,
       },
     });
-    const finalResults = [];
-    for (let i = 0; i < result.length; i++) {
-      if (result[i].subCategories.length !== 0) {
-        for (let j = 0; j < result[i].subCategories.length; j++) {
-          const y = await this.stepService.findSteps(
-            result[i].id,
-            result[i].subCategories[j].id,
-          );
+    for (const category of categories) {
+      if (category.subCategories.length) {
+        for (const subCategory of category.subCategories) {
+          steps = await this.stepService.findSteps(category.id, subCategory.id);
+          const subCategories = category.subCategories.map((subCategory) => ({
+            ...subCategory,
+            steps,
+          }));
           finalResults.push({
-            id: result[i].id.toString(),
-            name: result[i].name,
-            description: result[i].description,
-            icon: result[i].icon,
-            subCategories: { ...result[i].subCategories, steps: y },
+            ...category,
+            subCategories,
             steps: [],
           });
         }
       } else {
-        const y = await this.stepService.findSteps(result[i].id, null);
-        finalResults.push({
-          id: result[i].id.toString(),
-          name: result[i].name,
-          description: result[i].description,
-          icon: result[i].icon,
-          subCategories: result[i].subCategories,
-          steps: y,
-        });
+        steps = await this.stepService.findSteps(category.id, null);
+        finalResults.push({ ...category, steps, id: category.id.toString() });
       }
     }
     return finalResults;

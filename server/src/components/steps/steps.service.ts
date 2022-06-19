@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { Step } from './steps.entity';
 import { Category } from '../categories/category.entity';
 import { StetpUpdateRequest } from './dto/step-upfate-request.dto';
-import { StetpResponse } from './dto/step-response.dto';
+import { StepResponse } from './dto/step-response.dto';
 @Injectable()
 export class StepsService {
   constructor(
@@ -26,7 +26,7 @@ export class StepsService {
   async findSteps(
     categoryId: number,
     subCategoryId?: number,
-  ): Promise<StetpResponse[]> {
+  ): Promise<StepResponse[]> {
     const result = await this.stepsRepository.find({
       relations: {
         stepFields: true,
@@ -37,7 +37,7 @@ export class StepsService {
       category: r.category,
       subCategory: r.subCategory,
       orderNumber: r.orderNumber,
-      steoFields: r.stepFields,
+      stepFields: r.stepFields,
     }));
   }
 
