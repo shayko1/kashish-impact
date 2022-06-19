@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStore } from '../../providers/StoreProvider';
 import { observer } from 'mobx-react';
-import { CategoryComponent } from '../consumer/CategoryComponent';
+import { CategoryComponent } from '../CategoryComponent';
 import { SubCategoryComponent } from '../consumer/SubCategoryComponent';
 import { StepComponent } from '../consumer/StepComponent';
 import { AnonymousFirstPage } from './AnonymusFirst';

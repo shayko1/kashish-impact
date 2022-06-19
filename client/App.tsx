@@ -34,8 +34,6 @@ const styles = StyleSheet.create({
   mainView: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 

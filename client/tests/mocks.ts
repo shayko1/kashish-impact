@@ -1,4 +1,4 @@
-import { Category, User } from '../src/consts/types';
+import { Category, ComponentType, User } from '../src/consts/types';
 
 export const defaultConsumerUser = (): User => ({
   id: 1,
@@ -25,46 +25,41 @@ export const defaultCategories = (): Category => {
         description: 'תיאור של ההסעה',
         name: 'הסעה',
         icon: 'http://',
-        subCategories: [
+        steps: [
           {
-            id: '2',
-            description: 'none',
-            name: 'none',
-            steps: [
+            id: '3',
+            orderNumber: 1,
+            name: 'איפה ומתי תרצה לעזור?',
+            fields: [
               {
-                id: '3',
+                id: '4',
                 orderNumber: 1,
-                fields: [
-                  {
-                    id: '4',
-                    orderNumber: 1,
-                    componentName: 'one-or-two-direction-component',
-                    additionalInfo: null,
-                  },
-                  {
-                    id: '5',
-                    orderNumber: 2,
-                    componentName: 'location-from-component',
-                    additionalInfo: 'add-current-location',
-                  },
-                  {
-                    id: '6',
-                    orderNumber: 3,
-                    componentName: 'location-to-component',
-                  },
-                ],
+                componentName: ComponentType.LOCATION_FROM_AND_TO,
+                additionalInfo: null,
               },
               {
-                id: '7',
+                id: '5',
                 orderNumber: 2,
-                fields: [
-                  {
-                    id: '8',
-                    orderNumber: 1,
-                    componentName: 'time-range-component',
-                    additionalInfo: null,
-                  },
-                ],
+                componentName: ComponentType.LOCATION_TO,
+                additionalInfo: 'add-current-location',
+              },
+              {
+                id: '6',
+                orderNumber: 3,
+                componentName: ComponentType.LOCATION_TO,
+              },
+            ],
+          },
+          {
+            id: '7',
+            orderNumber: 2,
+            name: '',
+            fields: [
+              {
+                id: '8',
+                orderNumber: 1,
+                componentName: ComponentType.TIME_RANGE,
+                additionalInfo: null,
               },
             ],
           },
@@ -89,7 +84,27 @@ export const defaultCategories = (): Category => {
         name: 'עזרה בבית',
         description: 'תיאור של זה',
         icon: 'http://',
-        subCategories: [],
+        steps: [
+          {
+            id: '3',
+            orderNumber: 1,
+            name: 'איפה ומתי תרצה לעזור?',
+            fields: [
+              {
+                id: '4',
+                orderNumber: 1,
+                componentName: ComponentType.LOCATION_TO,
+                additionalInfo: null,
+              },
+              {
+                id: '8',
+                orderNumber: 1,
+                componentName: ComponentType.TIME_RANGE,
+                additionalInfo: null,
+              }
+            ],
+          }
+        ],
       },
     ]
   }

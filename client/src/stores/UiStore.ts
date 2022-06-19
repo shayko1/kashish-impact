@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import { Category, NewRecordProcessLocationType } from '../consts/types';
+import { Category, NewRecordProcessLocationType, Step, StepField } from '../consts/types';
 import { Wizard, WizardStepStates } from 'react-native-ui-lib';
 import { ApplicationMode, UI_STATE, UserType } from '../consts/enums';
 import { RootStore } from './Store';
@@ -20,14 +20,14 @@ export class UIStore {
       selectedCategory: { id: '', name: '', steps: [], subCategories: [], description: '', icon: '' },
       categoryPath: []
     };
-  public wizardState: {
-    activeIndex: number,
-    completedStepIndex: number,
-    steps: { label: string, state: WizardStepStates }[]
+  public stepsState: {
+    activeStepNumber: number,
+    steps: Step[],
+    dto: { [key: string]: string }
   } = {
-      activeIndex: 0,
-      completedStepIndex: 0,
-      steps: [{ label: "step 1", state: Wizard.States.ENABLED }, { label: "step 2", state: Wizard.States.DISABLED }, { label: "step 3", state: Wizard.States.DISABLED }]
+      activeStepNumber: 0,
+      steps: [],
+      dto: {}
     };
 
   get isLoadingState() {
@@ -44,6 +44,10 @@ export class UIStore {
 
   get categories() {
     return this.categoryState.selectedCategory.subCategories || [];
+  }
+
+  get activeStep(): Step {
+    return this.stepsState.steps[this.stepsState.activeStepNumber];
   }
 
   setPageState(state: UI_STATE) {
@@ -66,17 +70,15 @@ export class UIStore {
   }
 
   clickStepsWizardNext = () => {
-    this.wizardState.activeIndex++;
-    this.wizardState.completedStepIndex++;
+    this.stepsState.activeStepNumber++;
   }
 
   clickStepsWizardPrev = () => {
-    if (this.wizardState.activeIndex === 0) {
+    if (this.stepsState.activeStepNumber === 0) {
       this.clickCategoryPrevButton();
       this.setApplicationMode(ApplicationMode.CATEGORIES);
     } else {
-      this.wizardState.activeIndex--;
-      this.wizardState.completedStepIndex++;
+      this.stepsState.activeStepNumber--;
     }
   }
 
@@ -84,7 +86,8 @@ export class UIStore {
     this.categoryState.selectedCategory = category;
     this.categoryState.categoryPath.push(category);
     if (this.categoryState.selectedCategory?.steps?.length > 0) {
-      this.setApplicationMode(ApplicationMode.WIZARD_STEPS);
+      this.stepsState.steps = this.categoryState.selectedCategory?.steps;
+      this.setApplicationMode(ApplicationMode.STEPS);
     }
   }
 

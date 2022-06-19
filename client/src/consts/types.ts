@@ -10,12 +10,13 @@ export interface Category {
 export interface Step {
   id: string;
   orderNumber: number;
+  name: string;
   fields: StepField[];
 }
 
 export interface StepField {
   id: string;
-  componentName: string;
+  componentName: ComponentType;
   additionalInfo?: string;
   orderNumber: number;
 }
@@ -26,6 +27,14 @@ export interface User {
   lastName: string;
   new_description: string;
   type: UserType;
+}
+
+export enum ComponentType {
+  LOCATION_FROM = 'LOCATION_FROM',
+  LOCATION_TO = 'LOCATION_TO',
+  LOCATION_FROM_AND_TO = 'LOCATION_FROM_AND_TO',
+  TIME_RANGE = 'TIME_RANGE',
+
 }
 
 export type NewRecordProcessLocationType = 'First' | 'Category' | 'SubCategory' | 'Steps';

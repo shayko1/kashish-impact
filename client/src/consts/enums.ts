@@ -11,7 +11,7 @@ export enum UserType {
 
 export enum ApplicationMode {
   USER_TYPE_SELECTION = 'USER_TYPE_SELECTION',
-  WIZARD_STEPS = 'WIZARD_STEPS',
+  STEPS = 'STEPS',
   SUCCESS = 'SUCCESS',
   CATEGORIES = 'CATEGORIES'
 }
