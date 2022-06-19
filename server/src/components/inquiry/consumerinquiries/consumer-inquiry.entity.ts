@@ -18,7 +18,7 @@ import { Category } from '../../categories/category.entity';
 import { SubCategory } from '../../categories/subcategories/subcategory.entity';
 import { Optional } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
-import { Status } from '../comoon/status.enum';
+import { Status } from '../common/status.enum';
 
 @Entity()
 export class ConsumerInquiry extends BaseEntity {

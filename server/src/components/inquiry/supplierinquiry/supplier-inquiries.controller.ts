@@ -12,7 +12,7 @@ import { ApiOkResponse, ApiProperty } from '@nestjs/swagger';
 import { SupplierInquiriesService } from './supplier-inquiries.service';
 import { SupplierInquiry } from './supplier-inquiry.entity';
 
-@Controller('supplier/inquieries')
+@Controller('inquieries/supplier')
 export class SupplierInquiriesController {
   constructor(private suplierInquiriesService: SupplierInquiriesService) {}
 

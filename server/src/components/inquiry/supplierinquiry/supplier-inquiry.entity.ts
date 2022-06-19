@@ -18,7 +18,7 @@ import { Optional } from '@nestjs/common';
 import { Category } from '../../categories/category.entity';
 import { SubCategory } from '../../categories/subcategories/subcategory.entity';
 import { ApiProperty } from '@nestjs/swagger';
-import { Status } from '../comoon/status.enum';
+import { Status } from '../common/status.enum';
 
 @Entity()
 export class SupplierInquiry extends BaseEntity {
