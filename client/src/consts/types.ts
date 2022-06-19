@@ -1,27 +1,20 @@
 export interface Category {
-  id: number;
-  name: string;
-  description: string;
-  icon?: string;
-  subCategories: SubCategory[];
-}
-
-export interface SubCategory {
-  id: number;
+  id: string;
   name?: string;
   description?: string;
   icon?: string;
-  steps: Step[];
+  subCategories?: Category[];
+  steps?: Step[];
 }
 
 export interface Step {
-  id: number;
+  id: string;
   orderNumber: number;
   fields: StepField[];
 }
 
 export interface StepField {
-  id: number;
+  id: string;
   componentName: string;
   additionalInfo?: string;
   orderNumber: number;

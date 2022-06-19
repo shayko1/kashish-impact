@@ -1,33 +1,30 @@
 import React from 'react';
-import { ScrollView, View, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { StoreProvider } from './src/providers/StoreProvider';
 import { RootStore } from './src/stores/store';
 import { ErrorComponent } from './src/components/ErrorComponent';
 import { LoadingIndication } from './src/components/LoadingIndication';
+import View from 'react-native-ui-lib/view';
+import { Colors } from 'react-native-ui-lib';
+import { ApplicationFlow } from './src/components/ApplicationFlow';
 import { NativeRouter } from 'react-router-native';
-import { AnonymousHome } from './src/components/Anonymous/AnonymusHome';
-import { ConsumerHome } from './src/components/consumer/ConsumerHome';
-import { SupplierHome } from './src/components/supplier/SupplierHome';
-import Text from 'react-native-ui-lib/text';
+import { Header } from './src/components/Header';
 
 export default function App() {
   const store = React.useMemo<RootStore>(() => new RootStore(), []);
+  const { uiStore: { isLoadingState, isErrorState, isReadyState } } = store;
+  React.useEffect(
+    () => store.fetchCategories()
+    , []);
   return (
     <StoreProvider store={store}>
       <NativeRouter>
-        <ScrollView>
-          <View style={styles.mainView}>
-            <ErrorComponent />
-            <LoadingIndication />
-            {store.dataStore.isAnonymous ? <AnonymousHome /> : null}
-            {store.dataStore.user?.type === 'Consumer' ? (
-              <ConsumerHome />
-            ) : null}
-            {store.dataStore.user?.type === 'Supplier' ? (
-              <SupplierHome />
-            ) : null}
-          </View>
-        </ScrollView>
+        <View style={styles.mainView}>
+          <Header />
+          {isErrorState && <ErrorComponent />}
+          {isLoadingState && <LoadingIndication />}
+          {isReadyState && <ApplicationFlow />}
+        </View>
       </NativeRouter>
     </StoreProvider>
   );
@@ -35,10 +32,26 @@ export default function App() {
 
 const styles = StyleSheet.create({
   mainView: {
-    marginTop: 50,
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+});
+
+Colors.loadSchemes({
+  light: {
+    screenBG: 'transparent',
+    textColor: Colors.grey10,
+    moonOrSun: Colors.yellow30,
+    mountainForeground: Colors.green30,
+    mountainBackground: Colors.green50
+  },
+  dark: {
+    screenBG: Colors.grey10,
+    textColor: Colors.white,
+    moonOrSun: Colors.grey80,
+    mountainForeground: Colors.violet10,
+    mountainBackground: Colors.violet20
+  }
 });
