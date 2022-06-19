@@ -22,7 +22,7 @@ export class User extends BaseEntity {
   @MaxLength(30)
   @IsString()
   lastName: string;
-  
+
   @ApiProperty()
   @Column()
   @MinLength(1)
@@ -39,8 +39,13 @@ export class User extends BaseEntity {
 
   @ApiProperty()
   @Column({
-    type: 'enum', 
-    enum: UserType
+    type: 'enum',
+    enum: UserType,
   })
   user_type: UserType;
+
+  @ApiProperty()
+  @Column()
+  @IsString()
+  client_id: string;
 }
