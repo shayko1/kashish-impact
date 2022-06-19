@@ -38,3 +38,18 @@ npx create-react-native-app -t with-typescript
 ## [swagger](https://kashish-impact-staging.herokuapp.com/api/#/default/NotesController_findAll)
 
 ## [Wix UI for Mobile](https://wix.github.io/react-native-ui-lib/docs/getting-started/setup)
+
+## Build + Deploy
+using expo.dev, build by runnig `eas build --platform android`. 
+The build manager (Team City like) can be seen at [Expo Builds](https://expo.dev/accounts/dudu-bernhard/projects/user-kashish/builds)
+Expo enable to submit from [Expo Submissions](https://expo.dev/accounts/dudu-bernhard/projects/user-kashish/submissions)
+submit can be done by running: ``
+
+## Android deploy
+In order to add the app to google play:
+- Add a user to expo.dev
+- Create a new project in Expo
+- Login from your code to Expo (using your credentials + keystore).
+- Add a new user to Google Play console.
+- Create a app_00..000.json auth file and use it during submit process.
+- Build project (eas build --platform android) -> an .aab file with be generated.
