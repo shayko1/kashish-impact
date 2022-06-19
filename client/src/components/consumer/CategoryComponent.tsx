@@ -4,36 +4,32 @@ import { StyleSheet } from 'react-native';
 import View from 'react-native-ui-lib/view';
 import Text from 'react-native-ui-lib/text';
 import Icon from 'react-native-ui-lib/icon';
-// import { Assets } from 'react-native-ui-lib';
-import { Category } from '../../consts/types';
 import { useStore } from '../../providers/StoreProvider';
 import TouchableOpacity from 'react-native-ui-lib/touchableOpacity';
+import { UserType } from '../../consts/enums';
 
 export const CategoryComponent = observer(() => {
-  const { dataStore, uiStore } = useStore();
-  const categories: Category[] = dataStore.categories;
+  const { uiStore: { setSelectedCategory, categories, userType } } = useStore();
+  const headerTitle = userType === UserType.CONSUMER ? "איך אפשר לעזור לך היום?" : "במה תרצה לעזור?"
   return (
     <>
       <View flex center>
         <View>
           <Icon
             margin-30
-            // source={Assets.icons.search}
             onPress={() => console.warn('press')}
           />
-          <Text>איך אפשר לעזור לך היום?</Text>
+          <Text>{headerTitle}</Text>
         </View>
         <View center>
           {categories.map((category) => (
             <TouchableOpacity
               key={category.id}
               onPress={() => {
-                uiStore.NewRecordProcessLocation =
-                  category.subCategories.length === 1 ? 'Steps' : 'SubCategory';
-                uiStore.NewRecordStepNumber = 0;
+                setSelectedCategory(category)
               }}
             >
-              <View style={styles.intentView} br50 margin-s5 bg-blue40 center>
+              <View style={styles.intentView} br50 margin-s5 bg-blue50 center>
                 <Text>{category.name}</Text>
                 <Text>{category.description}</Text>
               </View>

@@ -3,3 +3,15 @@ export enum UI_STATE {
   LOADING = 'LOADING',
   ERROR = 'ERROR',
 }
+
+export enum UserType {
+  CONSUMER = 'CONSUMER',
+  SUPPLIER = 'SUPPLIER',
+}
+
+export enum ApplicationMode {
+  USER_TYPE_SELECTION = 'USER_TYPE_SELECTION',
+  WIZARD_STEPS = 'WIZARD_STEPS',
+  SUCCESS = 'SUCCESS',
+  CATEGORIES = 'CATEGORIES'
+}
