@@ -10,6 +10,7 @@ import { SubCategoriesModule } from './components/categories/subcategories/subca
 import { ConsumerInquiriesModule } from './components/inquiry/consumerinquiries/consumer-inquiries.module';
 import { SupplierInquiriesModule } from './components/inquiry/supplierinquiry/supplier-inquiries.module';
 import { ConfigModule } from '@nestjs/config';
+import { MatchesModule } from './components/matches/matches.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { ConfigModule } from '@nestjs/config';
     SubCategoriesModule,
     ConsumerInquiriesModule,
     SupplierInquiriesModule,
+    MatchesModule
   ],
   controllers: [AppController],
   providers: [AppService],

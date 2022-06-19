@@ -17,7 +17,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  // */1 * * * *  => meaans cron job will be executes every 1 minute
+  // */1 * * * *  => means cron job will be executes every 1 minute
   const x = new MatcherHandler(1 as any, 2 as any);
   //TODO: inject real instances of supplier and customer in order to get data from DB
   const cronJob = new CronJob('*/1 * * * *', async () => {
