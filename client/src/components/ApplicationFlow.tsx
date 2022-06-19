@@ -6,9 +6,6 @@ import { StepsWizard } from '../pages/StepsWizardPage';
 import { SuccessPage } from '../pages/SuccessPage';
 import { useStore } from '../providers/StoreProvider';
 import { CategoryComponent } from './consumer/CategoryComponent';
-import { ConsumerHome } from './consumer/ConsumerHome';
-import { SubCategoryComponent } from './consumer/SubCategoryComponent';
-import { SupplierHome } from './supplier/SupplierHome';
 
 export const ApplicationFlow = observer(() => {
     const { uiStore: { applicationMode } } = useStore();

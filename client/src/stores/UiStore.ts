@@ -11,11 +11,15 @@ export class UIStore {
 
   public error: string;
   public state: UI_STATE = UI_STATE.READY;
-  public _newRecordProcessLocation: NewRecordProcessLocationType = 'First';
-  public _newRecordStepNumber?: number;
-  private _applicationMode: ApplicationMode = ApplicationMode.USER_TYPE_SELECTION;
+  public applicationMode: ApplicationMode = ApplicationMode.USER_TYPE_SELECTION;
   public userType: UserType;
-  public selectedCategory: Category = { id: '', name: '', steps: [], subCategories: [], description: '', icon: '' };
+  public categoryState: {
+    selectedCategory: Category,
+    categoryPath: Category[],
+  } = {
+      selectedCategory: { id: '', name: '', steps: [], subCategories: [], description: '', icon: '' },
+      categoryPath: []
+    };
   public wizardState: {
     activeIndex: number,
     completedStepIndex: number,
@@ -39,7 +43,7 @@ export class UIStore {
   }
 
   get categories() {
-    return this.selectedCategory.subCategories || [];
+    return this.categoryState.selectedCategory.subCategories || [];
   }
 
   setPageState(state: UI_STATE) {
@@ -58,7 +62,7 @@ export class UIStore {
   }
 
   setApplicationMode(applicationMode: ApplicationMode) {
-    this._applicationMode = applicationMode;
+    this.applicationMode = applicationMode;
   }
 
   clickStepsWizardNext = () => {
@@ -67,34 +71,29 @@ export class UIStore {
   }
 
   clickStepsWizardPrev = () => {
-    this.wizardState.activeIndex--;
-    this.wizardState.completedStepIndex++;
+    if (this.wizardState.activeIndex === 0) {
+      this.clickCategoryPrevButton();
+      this.setApplicationMode(ApplicationMode.CATEGORIES);
+    } else {
+      this.wizardState.activeIndex--;
+      this.wizardState.completedStepIndex++;
+    }
   }
 
   setSelectedCategory = (category: Category) => {
-    this.selectedCategory = category;
-  }
-
-  get applicationMode() {
-    if (this._applicationMode === ApplicationMode.CATEGORIES && this.selectedCategory?.steps?.length > 0) {
-      return ApplicationMode.WIZARD_STEPS;
+    this.categoryState.selectedCategory = category;
+    this.categoryState.categoryPath.push(category);
+    if (this.categoryState.selectedCategory?.steps?.length > 0) {
+      this.setApplicationMode(ApplicationMode.WIZARD_STEPS);
     }
-    return this._applicationMode;
   }
 
-  set NewRecordStepNumber(step: number) {
-    this._newRecordStepNumber = step;
-  }
-
-  get NewRecordStepNumber() {
-    return this._newRecordStepNumber;
-  }
-
-  set NewRecordProcessLocation(processLocation: NewRecordProcessLocationType) {
-    this._newRecordProcessLocation = processLocation;
-  }
-
-  get NewRecordProcessLocation() {
-    return this._newRecordProcessLocation;
+  clickCategoryPrevButton = () => {
+    this.categoryState.categoryPath.pop();
+    if (this.categoryState.categoryPath.length >= 1) {
+      this.setSelectedCategory(this.categoryState.categoryPath[this.categoryState.categoryPath.length - 1]);
+    } else {
+      this.setApplicationMode(ApplicationMode.USER_TYPE_SELECTION);
+    }
   }
 }

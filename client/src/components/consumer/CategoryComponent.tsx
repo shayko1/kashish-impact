@@ -7,9 +7,10 @@ import Icon from 'react-native-ui-lib/icon';
 import { useStore } from '../../providers/StoreProvider';
 import TouchableOpacity from 'react-native-ui-lib/touchableOpacity';
 import { UserType } from '../../consts/enums';
+import { NavigationButton } from '../NavigationButton';
 
 export const CategoryComponent = observer(() => {
-  const { uiStore: { setSelectedCategory, categories, userType } } = useStore();
+  const { uiStore: { setSelectedCategory, clickCategoryPrevButton, categories, userType } } = useStore();
   const headerTitle = userType === UserType.CONSUMER ? "איך אפשר לעזור לך היום?" : "במה תרצה לעזור?"
   return (
     <>
@@ -35,6 +36,9 @@ export const CategoryComponent = observer(() => {
               </View>
             </TouchableOpacity>
           ))}
+        </View>
+        <View>
+          <NavigationButton label={'אחורה'} onPress={() => clickCategoryPrevButton()} />
         </View>
       </View>
     </>

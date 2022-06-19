@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 import View from 'react-native-ui-lib/view';
 import { Button, ButtonSize, Colors, Text, Wizard } from 'react-native-ui-lib';
 import { TouchableOpacityProps } from 'react-native-ui-lib/src/incubator';
+import { NavigationButton } from '../components/NavigationButton';
 
 export const StepsWizard = observer(() => {
     const { uiStore: { clickStepsWizardNext, clickStepsWizardPrev, wizardState: { steps, activeIndex } } } = useStore();
@@ -16,16 +17,10 @@ export const StepsWizard = observer(() => {
             </Wizard>
             <View flex><Text>שלבים מתחלפים כאן</Text></View>
             <View>
-                <WizardButton label={'קדימה'} onPress={() => clickStepsWizardNext()} />
-                <WizardButton label={'אחורה'} onPress={() => clickStepsWizardPrev()} />
+                <NavigationButton label={'קדימה'} onPress={() => clickStepsWizardNext()} />
+                <NavigationButton label={'אחורה'} onPress={() => clickStepsWizardPrev()} />
             </View>
         </View>
     );
 });
-
-const WizardButton = ({ label, onPress }: { label: string, onPress: (props?: TouchableOpacityProps | any) => void; }) => (
-    <View margin={10}>
-        <Button label={label} size={Button.sizes.large} backgroundColor={Colors.blue10} onPress={onPress} />
-    </View>
-);
 

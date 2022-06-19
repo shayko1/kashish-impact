@@ -16,6 +16,6 @@ export class RootStore {
   fetchCategories() {
     const categories = defaultCategories();
     this.dataStore.setCategories(categories);
-    this.uiStore.selectedCategory = categories;
+    this.uiStore.setSelectedCategory(categories);
   }
 }
