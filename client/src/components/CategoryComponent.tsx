@@ -5,9 +5,11 @@ import View from 'react-native-ui-lib/view';
 import Text from 'react-native-ui-lib/text';
 import Icon from 'react-native-ui-lib/icon';
 import { useStore } from '../providers/StoreProvider';
-import TouchableOpacity from 'react-native-ui-lib/touchableOpacity';
 import { UserType } from '../consts/enums';
 import { NavigationButton } from './NavigationButton';
+import { Card } from 'react-native-ui-lib';
+import { Category } from '../consts/types';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export const CategoryComponent = observer(() => {
   const {
@@ -25,28 +27,18 @@ export const CategoryComponent = observer(() => {
   return (
     <>
       <View style={styles.categoryView}>
-        <View>
-          <Icon margin-30 onPress={() => console.warn('press')} />
+        <View marginL-20>
+          <Icon onPress={() => console.warn('press')} />
           <Text text50>{headerTitle}</Text>
         </View>
-        <View center>
+        <View flex style={{ width: '100%' }}>
           {categories.map((category) => (
-            <TouchableOpacity
-              key={category.id}
-              onPress={() => {
-                setSelectedCategory(category);
-              }}
-            >
-              <View style={styles.intentView} br50 margin-s5 bg-blue50 center>
-                <Text text60>{category.name}</Text>
-                <Text text70>{category.description}</Text>
-              </View>
-            </TouchableOpacity>
+            <CategoryCard category={category} onPress={() => setSelectedCategory(category)} key={category.id} />
           ))}
         </View>
         <View>
           <NavigationButton
-            label={'אחורה'}
+            label={'Back'}
             onPress={() => clickCategoryPrevButton()}
           />
         </View>
@@ -55,15 +47,53 @@ export const CategoryComponent = observer(() => {
   );
 });
 
+const CategoryCard = ({ category, onPress }: { category: Category, onPress: () => void }) => (
+  <Card
+    style={{ flex: 1, borderWidth: 1, minHeight: 50, alignItems: 'flex-start', padding: 10 }}
+    center
+    marginL-20
+    marginR-20
+    marginT-20
+    marginB-20
+    onPress={onPress}
+  >
+    <Card.Section
+      content={
+        [
+          { text: category.name, text70: true, $textDefault: true },
+          {
+            text: category.description,
+            text80: true,
+            $textDefault: true
+          }]}
+    >
+    </Card.Section>
+
+  </Card>
+)
+
+const CategoryCard2 = ({ category, onPress }: { category: Category, onPress: () => void }) => (
+  <View
+    style={{ borderWidth: 1, minHeight: 50, borderRadius: 10 }}
+    flex center
+    marginL-20
+    marginR-20
+    marginT-20
+    marginB-20
+    onPress={onPress}
+  >
+    <TouchableOpacity style={{ width: "100%" }}>
+      <View flex right>
+        <Text>dfdf</Text>
+      </View>
+    </TouchableOpacity>
+  </View>
+)
+
 const styles = StyleSheet.create({
-  intentView: {
-    width: 300,
-    height: 120,
-  },
   categoryView: {
     flex: 1,
+    width: '100%',
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
