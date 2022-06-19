@@ -13,7 +13,7 @@ export class CategoriesService {
   async getCategories(): Promise<CategoriesResponse[]> {
     const result = await this.categoriesRepository.find({
       relations: {
-        subCategory: true,
+        subCategories: true,
       },
     });
     return result.map((r) => ({
@@ -21,7 +21,7 @@ export class CategoriesService {
       name: r.name,
       description: r.description,
       icon: r.icon,
-      subCategories: r.subCategory,
+      subCategories: r.subCategories,
     }));
   }
 

@@ -39,7 +39,7 @@ export class SubCategory extends BaseEntity {
   @ApiProperty()
   categoryId: number;
 
-  @ManyToOne(() => Category, (category) => category.id)
+  @ManyToOne(() => Category, (category) => category.subCategories)
   @JoinColumn({ name: 'categoryId', referencedColumnName: 'id' })
-  category: Category;
+  public category: Category;
 }

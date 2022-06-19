@@ -34,7 +34,7 @@ export class Category extends BaseEntity {
   @ApiProperty()
   icon: string;
 
-  @OneToMany(() => SubCategory, (subCategory) => subCategory.categoryId)
+  @OneToMany(() => SubCategory, (subCategory) => subCategory.category)
   @JoinColumn()
-  subCategory: SubCategory[];
+  subCategories: SubCategory[];
 }
