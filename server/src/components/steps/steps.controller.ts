@@ -28,6 +28,17 @@ export class StepsController {
     }));
   }
 
+  @Get('/:categoryId/:subCategoryId')
+  findSteps(
+    @Param('categoryId') categoryId: string,
+    @Param('subCategoryId') subCategoryId?: string,
+  ): Promise<StetpResponse[]> {
+    return this.stepsService.findSteps(
+      Number(categoryId),
+      Number(subCategoryId),
+    );
+  }
+
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id) {
     return this.stepsService.findOne(id);

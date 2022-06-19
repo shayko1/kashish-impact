@@ -10,7 +10,6 @@ export class MatcherHandler {
   ) {}
 
   handle() {
-    console.log("CRON JOB STARTED!")
+    console.log('CRON JOB STARTED!');
   }
-  
 }

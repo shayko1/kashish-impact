@@ -5,11 +5,13 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 import { IsNumber, IsString, MaxLength, MinLength } from 'class-validator';
 import { Category } from '../categories/category.entity';
 import { SubCategory } from '../categories/subcategories/subcategory.entity';
 import { ApiProperty } from '@nestjs/swagger';
+import { StepField } from './stepsFields/stepsFields.entity';
 
 @Entity()
 export class Step extends BaseEntity {
@@ -40,4 +42,8 @@ export class Step extends BaseEntity {
   @IsNumber()
   @ApiProperty()
   orderNumber: number;
+
+  @OneToMany(() => StepField, (stepField) => stepField.step)
+  @JoinColumn()
+  public stepFields: StepField[];
 }

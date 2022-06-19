@@ -5,7 +5,6 @@ import { SubCategoriesController } from './subcategories.controller';
 import { SubCategoriesService } from './subcategories.service';
 import { SubCategory } from './subcategory.entity';
 
-
 @Module({
   imports: [TypeOrmModule.forFeature([SubCategory])],
   providers: [SubCategoriesService],

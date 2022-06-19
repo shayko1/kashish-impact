@@ -1,4 +1,4 @@
-import { Step } from '../../steps/steps.entity';
+import { StetpResponse } from 'src/components/steps/dto/step-response.dto';
 import { SubCategory } from '../subcategories/subcategory.entity';
 
 export interface CategoriesResponse {
@@ -7,5 +7,5 @@ export interface CategoriesResponse {
   description?: string;
   icon?: string;
   subCategories?: SubCategory[];
-  steps?: Step[];
+  steps?: StetpResponse[];
 }

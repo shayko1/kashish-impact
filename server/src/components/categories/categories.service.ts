@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm/repository/Repository';
+import { StepsService } from '../steps/steps.service';
 import { Category } from './category.entity';
 import { CategoriesResponse } from './dto/categories-response.dto';
 
@@ -9,6 +10,7 @@ export class CategoriesService {
   constructor(
     @InjectRepository(Category)
     private categoriesRepository: Repository<Category>,
+    private readonly stepService: StepsService,
   ) {}
   async getCategories(): Promise<CategoriesResponse[]> {
     const result = await this.categoriesRepository.find({
@@ -16,13 +18,19 @@ export class CategoriesService {
         subCategories: true,
       },
     });
-    return result.map((r) => ({
-      id: r.id.toString(),
-      name: r.name,
-      description: r.description,
-      icon: r.icon,
-      subCategories: r.subCategories,
-    }));
+    const finalResults = [];
+    for (let i = 0; i < result.length; i++) {
+      const y = await this.stepService.findSteps(result[i].id, 1);
+      finalResults.push({
+        id: result[i].id.toString(),
+        name: result[i].name,
+        description: result[i].description,
+        icon: result[i].icon,
+        subCategories: result[i].subCategories,
+        steps: y,
+      });
+    }
+    return finalResults;
   }
 
   findOne(id: number): Promise<Category> {
