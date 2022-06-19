@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm/repository/Repository';
 import { Category } from './category.entity';
+import { CategoriesResponse } from './dto/categories-response.dto';
 
 @Injectable()
 export class CategoriesService {
@@ -9,8 +10,19 @@ export class CategoriesService {
     @InjectRepository(Category)
     private categoriesRepository: Repository<Category>,
   ) {}
-  async getCategories(): Promise<Category[]> {
-    return await this.categoriesRepository.find();
+  async getCategories(): Promise<CategoriesResponse[]> {
+    const result = await this.categoriesRepository.find({
+      relations: {
+        subCategory: true,
+      },
+    });
+    return result.map((r) => ({
+      id: r.id.toString(),
+      name: r.name,
+      description: r.description,
+      icon: r.icon,
+      subCategories: r.subCategory,
+    }));
   }
 
   findOne(id: number): Promise<Category> {

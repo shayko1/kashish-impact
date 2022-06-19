@@ -11,6 +11,7 @@ import { ParseIntPipe } from '@nestjs/common/pipes/parse-int.pipe';
 import { ApiOkResponse } from '@nestjs/swagger';
 import { CategoriesService } from './categories.service';
 import { Category } from './category.entity';
+import { CategoriesResponse } from './dto/categories-response.dto';
 
 @Controller('categories')
 export class CategoriesController {
@@ -22,7 +23,7 @@ export class CategoriesController {
     type: Category,
     isArray: true, // <= diff is here
   })
-  findAll() {
+  findAll(): Promise<CategoriesResponse[]> {
     return this.categoriesService.getCategories();
   }
 

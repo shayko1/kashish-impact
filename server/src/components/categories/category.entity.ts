@@ -4,9 +4,11 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   OneToMany,
+  JoinColumn,
 } from 'typeorm';
 import { IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { SubCategory } from './subcategories/subcategory.entity';
 
 @Entity()
 export class Category extends BaseEntity {
@@ -31,4 +33,8 @@ export class Category extends BaseEntity {
   @IsString()
   @ApiProperty()
   icon: string;
+
+  @OneToMany(() => SubCategory, (subCategory) => subCategory.categoryId)
+  @JoinColumn()
+  subCategory: SubCategory[];
 }
