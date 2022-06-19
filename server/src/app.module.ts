@@ -11,6 +11,8 @@ import { ConsumerInquiriesModule } from './components/inquiry/consumerinquiries/
 import { SupplierInquiriesModule } from './components/inquiry/supplierinquiry/supplier-inquiries.module';
 import { ConfigModule } from '@nestjs/config';
 import { MatchesModule } from './components/matches/matches.module';
+import { ScheduleModule } from '@nestjs/schedule';
+
 
 @Module({
   imports: [
@@ -25,6 +27,7 @@ import { MatchesModule } from './components/matches/matches.module';
       synchronize: true,
     }),
     ConfigModule.forRoot({ isGlobal: true }),
+    ScheduleModule.forRoot(),
     UsersModule,
     StepsModule,
     StepFieldsModule,

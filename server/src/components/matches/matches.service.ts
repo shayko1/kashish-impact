@@ -1,14 +1,17 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import { Repository } from 'typeorm/repository/Repository';
 import { Match } from './matches.entity';
+import { MatcherHandler } from './handlers/matcher.handler';
 
 @Injectable()
 export class MatchesService {
   constructor(
     @InjectRepository(Match)
     private matchesRepository: Repository<Match>,
-  ) {}
+    private matchesHandler: MatcherHandler
+  ) {  }
   async getMatches(): Promise<Match[]> {
     return await this.matchesRepository.find();
   }
@@ -36,5 +39,10 @@ export class MatchesService {
     editedMatch.supplierStatus = match.supplierStatus;
     await editedMatch.save();
     return editedMatch;
+  }
+
+  @Cron(CronExpression.EVERY_30_SECONDS)
+  handleCron() {
+    this.matchesHandler.handle();
   }
 }
