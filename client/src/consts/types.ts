@@ -1,4 +1,10 @@
-import {UserType} from "./enums";
+import { UserType } from './enums';
+
+export interface FlowInfo {
+  category?: Category;
+  user?: User;
+  fields?: {[key: string]: any};
+}
 
 export interface Category {
   id: string;
@@ -37,5 +43,4 @@ export enum ComponentType {
   LOCATION_TO = 'LOCATION_TO',
   LOCATION_FROM_AND_TO = 'LOCATION_FROM_AND_TO',
   TIME_RANGE = 'TIME_RANGE',
-
 }

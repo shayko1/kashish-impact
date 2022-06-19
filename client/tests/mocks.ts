@@ -1,3 +1,4 @@
+import { UserType } from '../src/consts/enums';
 import { Category, ComponentType, User } from '../src/consts/types';
 
 export const defaultConsumerUser = (): User => ({
@@ -5,7 +6,8 @@ export const defaultConsumerUser = (): User => ({
   firstName: 'Steph',
   lastName: 'Curry',
   new_description: 'Best 3 point shutter in the world',
-  type: 'Consumer',
+  type: UserType.CONSUMER,
+  phone_number: '333',
 });
 
 export const defaultSupplierUser = (): User => ({
@@ -13,7 +15,8 @@ export const defaultSupplierUser = (): User => ({
   firstName: 'Steph',
   lastName: 'Curry',
   new_description: 'Best 3 point shutter in the world',
-  type: 'Supplier',
+  type: UserType.SUPPLIER,
+  phone_number: '333',
 });
 
 export const defaultCategories = (): Category => {
@@ -101,11 +104,11 @@ export const defaultCategories = (): Category => {
                 orderNumber: 1,
                 componentName: ComponentType.TIME_RANGE,
                 additionalInfo: null,
-              }
+              },
             ],
-          }
+          },
         ],
       },
-    ]
-  }
+    ],
+  };
 };

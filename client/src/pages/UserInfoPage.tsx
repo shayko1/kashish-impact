@@ -20,7 +20,7 @@ export const UserInfoPage = observer(() => {
           useTopErrors
           validate={'required'}
           errorMessage="Please fill this input"
-          onChangeText={(text) => (dataStore.tempUserData.firstName = text)}
+          onChangeText={(text) => (dataStore.flowInfo.user.firstName = text)}
         />
         <TextField
           text70
@@ -30,7 +30,7 @@ export const UserInfoPage = observer(() => {
           useTopErrors
           validate={'required'}
           errorMessage="Please fill this input"
-          onChangeText={(text) => (dataStore.tempUserData.lastName = text)}
+          onChangeText={(text) => (dataStore.flowInfo.user.lastName = text)}
         />
         <TextField
           text70
@@ -40,7 +40,7 @@ export const UserInfoPage = observer(() => {
           useTopErrors
           validate={'required'}
           errorMessage="Please fill this input"
-          onChangeText={(text) => (dataStore.tempUserData.phone_number = text)}
+          onChangeText={(text) => (dataStore.flowInfo.user.phone_number = text)}
         />
         <TextField
           text70
@@ -49,7 +49,7 @@ export const UserInfoPage = observer(() => {
           title="Description"
           multiline
           onChangeText={(text) =>
-            (dataStore.tempUserData.new_description = text)
+            (dataStore.flowInfo.user.new_description = text)
           }
         />
       </View>
@@ -59,9 +59,9 @@ export const UserInfoPage = observer(() => {
             label={'next'}
             onPress={() => {
               if (
-                !!dataStore.tempUserData.firstName &&
-                !!dataStore.tempUserData.lastName &&
-                !!dataStore.tempUserData.phone_number
+                !!dataStore.flowInfo.user.firstName &&
+                !!dataStore.flowInfo.user.lastName &&
+                !!dataStore.flowInfo.user.phone_number
               ) {
                 uiStore.setApplicationMode(ApplicationMode.CATEGORIES);
               }
