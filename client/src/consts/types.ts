@@ -1,3 +1,5 @@
+import {UserType} from "./enums";
+
 export interface Category {
   id: string;
   name?: string;
@@ -27,6 +29,7 @@ export interface User {
   lastName: string;
   new_description: string;
   type: UserType;
+  phone_number: string;
 }
 
 export enum ComponentType {
@@ -36,7 +39,3 @@ export enum ComponentType {
   TIME_RANGE = 'TIME_RANGE',
 
 }
-
-export type NewRecordProcessLocationType = 'First' | 'Category' | 'SubCategory' | 'Steps';
-
-export type UserType = 'Consumer' | 'Supplier';

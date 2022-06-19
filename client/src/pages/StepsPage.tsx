@@ -17,7 +17,7 @@ export const StepsPage = observer(() => {
             <Text>Step {activeStepNumber + 1} out of {steps.length}</Text>
           </View>
           <View margin={10}>
-            {fields.map((field) => <FieldComponent field={field} />)}
+            {fields.map((field) => <FieldComponent field={field} key={field.id} />)}
           </View>
         </View>
       </View>

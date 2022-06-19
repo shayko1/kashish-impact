@@ -21,7 +21,7 @@ const MyIntentCardCmp = ({
   text: string;
   userType: UserType;
 }) => {
-  const { uiStore } = useStore();
+  const { uiStore, dataStore } = useStore();
   return (
     <Card
       style={{ flex: 1, backgroundColor: 'lightblue' }}
@@ -32,6 +32,7 @@ const MyIntentCardCmp = ({
       marginB-20
       onPress={() => {
         uiStore.setUserType(userType);
+        dataStore.addTempUser(userType);
         uiStore.setApplicationMode(ApplicationMode.USER_INFO);
       }}
     >
