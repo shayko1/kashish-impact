@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import { defaultCategories, defaultConsumerUser } from '../../tests/mocks';
+import { defaultCategories } from '../../tests/mocks';
 import { Category, User } from '../consts/types';
 import { RootStore } from './Store';
 
@@ -8,7 +8,6 @@ export class DataStore {
   public categories: Category;
   constructor(public readonly rootStore: RootStore) {
     this.categories = defaultCategories();
-    // this.user = defaultConsumerUser();
     makeAutoObservable(this);
   }
   get isAnonymous() {
@@ -19,4 +18,7 @@ export class DataStore {
     this.categories = categories;
   }
 
+  setUser(user: User) {
+    this.user = user;
+  }
 }

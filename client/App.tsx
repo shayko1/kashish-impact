@@ -14,12 +14,14 @@ export default function App() {
   const store = React.useMemo<RootStore>(() => new RootStore(), []);
   const { uiStore: { isLoadingState, isErrorState, isReadyState } } = store;
   React.useEffect(
-    () => store.fetchCategories()
+    () => {
+      void store.init();
+    }
     , []);
   return (
     <StoreProvider store={store}>
       <NativeRouter>
-        <View style={styles.mainView}>
+        <View style={styles.mainView} marginT-20>
           <Header />
           {isErrorState && <ErrorComponent />}
           {isLoadingState && <LoadingIndication />}

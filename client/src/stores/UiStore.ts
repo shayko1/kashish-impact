@@ -62,7 +62,6 @@ export class UIStore {
 
   setUserType(userType: UserType) {
     this.userType = userType;
-    this.setApplicationMode(ApplicationMode.CATEGORIES);
   }
 
   setApplicationMode(applicationMode: ApplicationMode) {
