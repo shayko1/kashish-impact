@@ -35,7 +35,7 @@ npx create-react-native-app -t with-typescript
 
 ## [Lucidchart link - design](https://lucid.app/lucidchart/073ff1e9-03e1-437a-a419-c573d34549a3/edit?page=0_0&invitationId=inv_c2180b75-41f3-4906-87a0-f930d7dfa366#)
 
-## [swagger](https://kashish-impact-staging.herokuapp.com/api/#/default/NotesController_findAll)
+## [swagger](https://kashish-impact-test.herokuapp.com/api/#/default/)
 
 ## [Wix UI for Mobile](https://wix.github.io/react-native-ui-lib/docs/getting-started/setup)
 
@@ -54,3 +54,8 @@ In order to add the app to google play:
 - Create a app_00..000.json auth file and use it during submit process.
 - Build project (eas build --platform android) -> an .aab file with be generated.
 - Because of an error, `eas submit` is not working (need to check...). In order to publish manually (on testing mode) go to ```https://play.google.com/console/u/1/developers/6636937385538026181/app/4973852792863535591/tracks/internal-testing?tab=testers```
+
+## Download Android App
+- Please send your user email to `dudub@wix.com` in order to be able to connect to this App.
+- Use the following link from your android phone: `https://play.google.com/apps/internaltest/4701480184624288630`
+- 

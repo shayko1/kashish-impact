@@ -3,7 +3,7 @@ import { Category } from '../../categories/category.entity';
 import { SubCategory } from '../../categories/subcategories/subcategory.entity';
 import { StepField } from '../stepsFields/stepsFields.entity';
 
-export class StetpResponse {
+export class StepResponse {
   @ApiProperty()
   category: Category;
   @ApiProperty()
@@ -11,5 +11,5 @@ export class StetpResponse {
   @ApiProperty()
   orderNumber: number;
   @ApiProperty()
-  steoFields?: StepField[];
+  stepFields?: StepField[];
 }

@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native';
 import { useStore } from '../../providers/StoreProvider';
 import * as Location from 'expo-location';
 
-export const LoactionTo = observer(() => {
+export const LocationTo = observer(() => {
   const { uiStore: { activeStep, setErrorState } } = useStore();
   const [location, setLocation] = React.useState(null);
   const [errorMsg, setErrorMsg] = React.useState(null);

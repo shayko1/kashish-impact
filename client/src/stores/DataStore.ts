@@ -1,10 +1,12 @@
 import { makeAutoObservable } from 'mobx';
 import { defaultCategories } from '../../tests/mocks';
-import { Category, User } from '../consts/types';
+import { UserType } from '../consts/enums';
+import { Category, FlowInfo, User } from '../consts/types';
 import { RootStore } from './Store';
 
 export class DataStore {
   public user?: User;
+  public flowInfo: FlowInfo = {};
   public categories: Category;
   constructor(public readonly rootStore: RootStore) {
     this.categories = defaultCategories();
@@ -20,5 +22,16 @@ export class DataStore {
 
   setUser(user: User) {
     this.user = user;
+  }
+
+  addTempUser(type: UserType) {
+    this.flowInfo.user = {
+      id: -1,
+      firstName: '',
+      lastName: '',
+      new_description: '',
+      phone_number: '',
+      type,
+    };
   }
 }

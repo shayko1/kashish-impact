@@ -1,3 +1,11 @@
+import { UserType } from './enums';
+
+export interface FlowInfo {
+  category?: Category;
+  user?: User;
+  fields?: {[key: string]: any};
+}
+
 export interface Category {
   id: string;
   name?: string;
@@ -27,6 +35,7 @@ export interface User {
   lastName: string;
   new_description: string;
   type: UserType;
+  phone_number: string;
 }
 
 export enum ComponentType {
@@ -34,9 +43,4 @@ export enum ComponentType {
   LOCATION_TO = 'LOCATION_TO',
   LOCATION_FROM_AND_TO = 'LOCATION_FROM_AND_TO',
   TIME_RANGE = 'TIME_RANGE',
-
 }
-
-export type NewRecordProcessLocationType = 'First' | 'Category' | 'SubCategory' | 'Steps';
-
-export type UserType = 'Consumer' | 'Supplier';

@@ -11,14 +11,14 @@ import { ParseIntPipe } from '@nestjs/common/pipes/parse-int.pipe';
 import { Step } from './steps.entity';
 import { StepsService } from './steps.service';
 import { StetpUpdateRequest } from './dto/step-upfate-request.dto';
-import { StetpResponse } from './dto/step-response.dto';
+import { StepResponse } from './dto/step-response.dto';
 
 @Controller('steps')
 export class StepsController {
   constructor(private stepsService: StepsService) {}
 
   @Get()
-  async findAll(): Promise<StetpResponse[]> {
+  async findAll(): Promise<StepResponse[]> {
     const result = await this.stepsService.getSteps();
     return result.map((step) => ({
       id: step.id,
@@ -32,7 +32,7 @@ export class StepsController {
   findSteps(
     @Param('categoryId') categoryId: string,
     @Param('subCategoryId') subCategoryId?: string,
-  ): Promise<StetpResponse[]> {
+  ): Promise<StepResponse[]> {
     return this.stepsService.findSteps(
       Number(categoryId),
       Number(subCategoryId),

@@ -1,6 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import { Category, NewRecordProcessLocationType, Step, StepField } from '../consts/types';
-import { Wizard, WizardStepStates } from 'react-native-ui-lib';
+import { Category, Step } from '../consts/types';
 import { ApplicationMode, UI_STATE, UserType } from '../consts/enums';
 import { RootStore } from './Store';
 

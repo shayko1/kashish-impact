@@ -11,15 +11,13 @@ export const StepsPage = observer(() => {
   const { fields } = activeStep;
   return (
     <>
-      <View flex>
-        <View flex left>
+      <View flex left>
           <View left>
-            <Text>Step {activeStepNumber + 1} out of {steps.length}</Text>
+            <Text text60>Step {activeStepNumber + 1} out of {steps.length}</Text>
           </View>
           <View margin={10}>
-            {fields.map((field) => <FieldComponent field={field} />)}
+            {fields.map((field) => <FieldComponent field={field} key={field.id} />)}
           </View>
-        </View>
       </View>
     </>
   );

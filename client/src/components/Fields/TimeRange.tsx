@@ -4,14 +4,88 @@ import View from 'react-native-ui-lib/view';
 import { StyleSheet } from 'react-native';
 import { useStore } from '../../providers/StoreProvider';
 import { DateTimePicker } from 'react-native-ui-lib';
+import { StepField } from '../../consts/types';
 
-export const TimeRange = observer(() => {
-  const { uiStore: { activeStep, setErrorState } } = useStore();
+export const TimeRange = observer(({ field }: { field: StepField }) => {
+  const { dataStore } = useStore();
+  const now = new Date(new Date(new Date().setMinutes(0)).setSeconds(0));
+
+  const updateDate = (date?: Date, fromTime?: Date, toTime?: Date) => {
+    dataStore.flowInfo.fields[field.id] = {
+      from: new Date(
+        fromTime
+          ? new Date(date.setHours(fromTime.getHours())).setMinutes(
+              fromTime.getMinutes(),
+            )
+          : date,
+      ),
+      to: new Date(
+        toTime
+          ? new Date(date.setHours(toTime.getHours())).setMinutes(
+              toTime.getMinutes(),
+            )
+          : date,
+      ),
+    };
+    console.warn({ data: dataStore.flowInfo.fields[field.id] });
+  };
+
+  const updateTime = (fromTime?: Date, toTime?: Date) => {
+    if (fromTime) {
+      const date = dataStore.flowInfo.fields[field.id]['from'];
+      dataStore.flowInfo.fields[field.id]['from'] = new Date(
+        new Date(date.setHours(fromTime.getHours())).setMinutes(
+          fromTime.getMinutes(),
+        ),
+      );
+    }
+    if (toTime) {
+      const date = dataStore.flowInfo.fields[field.id]['to'];
+      dataStore.flowInfo.fields[field.id]['to'] = new Date(
+        new Date(date.setHours(toTime.getHours())).setMinutes(
+          toTime.getMinutes(),
+        ),
+      );
+    }
+    console.warn({ data: dataStore.flowInfo.fields[field.id] });
+  };
+
+  React.useEffect(() => {
+    updateDate(now, now, new Date(new Date(now).setHours(now.getHours() + 2)));
+  }, []);
 
   return (
     <>
-      <View>
-        <DateTimePicker title={'Select time'} placeholder={'Placeholder'} mode={'time'} />
+      <View flex>
+        <DateTimePicker
+          // @ts-expect-error
+          containerStyle={{ marginVertical: 10 }}
+          title={'Date'}
+          placeholder={'Select a date'}
+          dateFormat={'MMM D, YYYY'}
+          value={now}
+          onChange={(date) => {
+            updateDate(date, undefined, undefined);
+          }}
+        />
+        <DateTimePicker
+          mode={'time'}
+          title={'From'}
+          placeholder={'Select time'}
+          value={now}
+          onChange={(date) => {
+            updateTime(date, undefined);
+          }}
+        />
+        <DateTimePicker
+          mode={'time'}
+          title={'To'}
+          placeholder={'Select time'}
+          value={new Date(new Date(now).setHours(now.getHours() + 2))}
+          onChange={(date) => {
+            updateTime(undefined, date);
+          }}
+        />
       </View>
     </>
   );
