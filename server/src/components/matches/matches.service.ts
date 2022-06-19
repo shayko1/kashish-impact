@@ -10,8 +10,8 @@ export class MatchesService {
   constructor(
     @InjectRepository(Match)
     private matchesRepository: Repository<Match>,
-    private matchesHandler: MatcherHandler
-  ) {  }
+    private matchesHandler: MatcherHandler,
+  ) {}
   async getMatches(): Promise<Match[]> {
     return await this.matchesRepository.find();
   }

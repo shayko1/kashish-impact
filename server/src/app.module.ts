@@ -13,16 +13,15 @@ import { ConfigModule } from '@nestjs/config';
 import { MatchesModule } from './components/matches/matches.module';
 import { ScheduleModule } from '@nestjs/schedule';
 
-
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.HOST,
+      host: 'sql11.freemysqlhosting.net',
       port: 3306,
-      username: 'root',
-      password: 'password',
-      database: 'test',
+      username: 'sql11500795',
+      password: 'yTDHXPKerg',
+      database: 'sql11500795',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
@@ -35,7 +34,7 @@ import { ScheduleModule } from '@nestjs/schedule';
     SubCategoriesModule,
     ConsumerInquiriesModule,
     SupplierInquiriesModule,
-    MatchesModule
+    MatchesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
