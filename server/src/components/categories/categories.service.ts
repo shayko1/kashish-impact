@@ -20,15 +20,32 @@ export class CategoriesService {
     });
     const finalResults = [];
     for (let i = 0; i < result.length; i++) {
-      const y = await this.stepService.findSteps(result[i].id, 1);
-      finalResults.push({
-        id: result[i].id.toString(),
-        name: result[i].name,
-        description: result[i].description,
-        icon: result[i].icon,
-        subCategories: result[i].subCategories,
-        steps: y,
-      });
+      if (result[i].subCategories.length !== 0) {
+        for (let j = 0; j < result[i].subCategories.length; j++) {
+          const y = await this.stepService.findSteps(
+            result[i].id,
+            result[i].subCategories[j].id,
+          );
+          finalResults.push({
+            id: result[i].id.toString(),
+            name: result[i].name,
+            description: result[i].description,
+            icon: result[i].icon,
+            subCategories: { ...result[i].subCategories, steps: y },
+            steps: [],
+          });
+        }
+      } else {
+        const y = await this.stepService.findSteps(result[i].id, null);
+        finalResults.push({
+          id: result[i].id.toString(),
+          name: result[i].name,
+          description: result[i].description,
+          icon: result[i].icon,
+          subCategories: result[i].subCategories,
+          steps: y,
+        });
+      }
     }
     return finalResults;
   }
