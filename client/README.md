@@ -35,7 +35,7 @@ npx create-react-native-app -t with-typescript
 
 ## [Lucidchart link - design](https://lucid.app/lucidchart/073ff1e9-03e1-437a-a419-c573d34549a3/edit?page=0_0&invitationId=inv_c2180b75-41f3-4906-87a0-f930d7dfa366#)
 
-## [swagger](https://kashish-impact-staging.herokuapp.com/api/#/default/NotesController_findAll)
+## [swagger](https://kashish-impact-test.herokuapp.com/api/#/default/)
 
 ## [Wix UI for Mobile](https://wix.github.io/react-native-ui-lib/docs/getting-started/setup)
 
