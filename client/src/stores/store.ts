@@ -25,6 +25,9 @@ export class RootStore {
     this.uiStore.setSelectedCategory(categories);
   }
 
+  createInquiry() {
+
+  }
   async fetchUser() {
     // check if user already exists
     try {
