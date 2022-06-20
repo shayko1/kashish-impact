@@ -22,12 +22,20 @@ export class SupplierInquiry extends BaseEntity {
   @IsNumber()
   userId: number;
 
+  @Column()
+  @IsNumber()
   @ApiProperty()
+  subCategoryId: number;
+
+  @Column()
+  @IsNumber()
+  @ApiProperty()
+  categoryId: number;
+
   @ManyToOne(() => Category, (category) => category.id)
   categoty: Category;
 
   @Optional()
-  @ApiProperty()
   @ManyToOne(() => SubCategory, (subCategory) => subCategory.id)
   subCategoty: SubCategory;
 

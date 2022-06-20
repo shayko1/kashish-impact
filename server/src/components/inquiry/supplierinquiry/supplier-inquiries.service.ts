@@ -35,8 +35,9 @@ export class SupplierInquiriesService {
     if (!editInquiry) {
       throw new NotFoundException('Supplier inquiry is not found');
     }
-    editInquiry.categoty = inquiry.categoty;
-    editInquiry.subCategoty = inquiry.subCategoty;
+    editInquiry.categoryId = inquiry.categoryId;
+    editInquiry.subCategoryId = inquiry.subCategoryId;
+    editInquiry.step_result = inquiry.step_result;
     editInquiry.status = inquiry.status;
     await editInquiry.save();
     return editInquiry;
