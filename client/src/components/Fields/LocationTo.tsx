@@ -11,7 +11,7 @@ import { StepField } from '../../consts/types';
 
 type LocationOption = 'currentLocation' | 'specificLocation';
 export const LocationTo = observer(({ field }: { field: StepField }) => {
-  const { uiStore: { activeStep, setErrorState } } = useStore();
+  const { uiStore: { setErrorState } } = useStore();
   const [locationOption, setLocationOption] = React.useState<LocationOption>('currentLocation');
   const [location, setLocation] = React.useState(null);
   const [errorMsg, setErrorMsg] = React.useState(null);

@@ -39,6 +39,8 @@ export const UserInfoPage = observer(() => {
           title="Phone Number"
           useTopErrors
           validate={'required'}
+          minLength={5}
+          maxLength={15}
           errorMessage="Please fill this input"
           onChangeText={(text) => (dataStore.flowInfo.user.phone_number = text)}
         />
@@ -60,7 +62,8 @@ export const UserInfoPage = observer(() => {
             if (
               !!dataStore.flowInfo.user.firstName &&
               !!dataStore.flowInfo.user.lastName &&
-              !!dataStore.flowInfo.user.phone_number
+              !!dataStore.flowInfo.user.phone_number &&
+              dataStore.flowInfo.user.phone_number.length >= 5
             ) {
               uiStore.setApplicationMode(ApplicationMode.CATEGORIES);
             }

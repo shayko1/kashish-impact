@@ -30,12 +30,13 @@ export interface StepField {
 }
 
 export interface User {
-  id: number;
+  id?: number;
   firstName: string;
   lastName: string;
   new_description: string;
-  type: UserType;
+  user_type: UserType;
   phone_number: string;
+  client_id: string;
 }
 
 export enum ComponentType {
@@ -43,4 +44,11 @@ export enum ComponentType {
   LOCATION_TO = 'LOCATION_TO',
   LOCATION_FROM_AND_TO = 'LOCATION_FROM_AND_TO',
   TIME_RANGE = 'TIME_RANGE',
+}
+
+export interface Inquiry {
+  userId: number;
+  categoryId: string;
+  step_result: { [key: string]: any };
+  status?: string; // what are the possible values
 }

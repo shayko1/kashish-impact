@@ -6,8 +6,9 @@ export const defaultConsumerUser = (): User => ({
   firstName: 'Steph',
   lastName: 'Curry',
   new_description: 'Best 3 point shutter in the world',
-  type: UserType.CONSUMER,
+  user_type: UserType.CONSUMER,
   phone_number: '333',
+  client_id: '10'
 });
 
 export const defaultSupplierUser = (): User => ({
@@ -15,8 +16,9 @@ export const defaultSupplierUser = (): User => ({
   firstName: 'Steph',
   lastName: 'Curry',
   new_description: 'Best 3 point shutter in the world',
-  type: UserType.SUPPLIER,
+  user_type: UserType.SUPPLIER,
   phone_number: '333',
+  client_id: '11'
 });
 
 export const defaultCategories = (): Category => {
