@@ -47,8 +47,9 @@ const MyIntentCardCmp = ({
   const content = USER_TYPE_CONTENT[userType];
   return (
     <Card
-      style={{ flex: 1, borderWidth: 1 }}
+      style={{ flex: 1, borderWidth: 1, borderColor: '#e8ecf0' }}
       center
+      enableShadow={true}
       marginL-20
       marginR-20
       marginT-20

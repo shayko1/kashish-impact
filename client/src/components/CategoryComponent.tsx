@@ -49,7 +49,7 @@ export const CategoryComponent = observer(() => {
 
 const CategoryCard = ({ category, onPress }: { category: Category, onPress: () => void }) => (
   <Card
-    style={{ flex: 1, borderWidth: 1, minHeight: 50, alignItems: 'flex-start', padding: 10 }}
+    style={{ flex: 1, minHeight: 50, alignItems: 'flex-start', padding: 10, borderWidth: 1, borderColor: '#e8ecf0' }}
     center
     marginL-20
     marginR-20
