@@ -2,7 +2,7 @@
   "expo": {
     "name": "User Kashish",
     "icon": "./assets/Kashish_App-04.png",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "slug": "user-kashish",
     "ios": {
       "bundleIdentifier": "com.dudu-bernhard.user-kashish",
@@ -10,7 +10,7 @@
     },
     "android": {
       "package": "com.dudubernhard.userkashish",
-      "versionCode": 5
+      "versionCode": 6
     }
   }
 }
