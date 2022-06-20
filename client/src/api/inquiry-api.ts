@@ -26,6 +26,15 @@ export const inquiryApi = {
   },
   addInquiry: async (userType: UserType, inquiry: Inquiry) => {
     try {
+      console.log({
+        url: `${Urls.baseUrl}${
+          userType === UserType.CONSUMER
+            ? Urls.inquieriesConsumer
+            : Urls.inquieriesSupplier
+        }`,
+      });
+      console.log({ inquiry });
+
       const { data } = await axios.post<Inquiry>(
         `${Urls.baseUrl}${
           userType === UserType.CONSUMER

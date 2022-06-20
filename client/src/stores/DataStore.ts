@@ -46,10 +46,11 @@ export class DataStore {
     }
 
     // add inquiry
-    const savedUser = await inquiryApi.addInquiry(this.user.user_type, {
+    await inquiryApi.addInquiry(this.user.user_type, {
       userId: this.user.id,
       categoryId: this.flowInfo.categoryId,
       step_result: this.flowInfo.fields,
+      status: 'pending',
     });
   };
 }

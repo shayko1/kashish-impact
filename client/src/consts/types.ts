@@ -50,5 +50,7 @@ export interface Inquiry {
   userId: number;
   categoryId: string;
   step_result: { [key: string]: any };
-  status?: string; // what are the possible values
+  status: InquiryStatus;
 }
+
+export type InquiryStatus = 'pending' | 'approved' | 'cancelled' | 'expired';
