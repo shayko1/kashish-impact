@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Step } from './steps.entity';
-import { Category } from '../categories/category.entity';
 import { StetpUpdateRequest } from './dto/step-upfate-request.dto';
 import { StepResponse } from './dto/step-response.dto';
 @Injectable()

@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Cron, CronExpression } from '@nestjs/schedule';
 import { Repository } from 'typeorm/repository/Repository';
 import { Match } from './matches.entity';
 import { MatcherHandler } from './handlers/matcher.handler';

@@ -1,7 +1,6 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
+import { IsString, MaxLength, MinLength } from 'class-validator';
 import { UserType } from '../inquiry/common/users.enum';
-import { type } from 'os';
 import { ApiProperty } from '@nestjs/swagger';
 
 @Entity()

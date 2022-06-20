@@ -6,7 +6,7 @@ import {
   OneToMany,
   JoinColumn,
 } from 'typeorm';
-import { IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
+import { IsString, MaxLength, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { SubCategory } from './subcategories/subcategory.entity';
 
