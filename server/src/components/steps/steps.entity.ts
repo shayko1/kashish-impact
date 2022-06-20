@@ -28,7 +28,7 @@ export class Step extends BaseEntity {
   @ManyToOne(() => Category, (category) => category.id)
   category: Category;
 
-  @Column()
+  @Column({ nullable: true })
   @IsNumber()
   @ApiProperty()
   subCategoryId: number;
