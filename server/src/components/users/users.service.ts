@@ -20,8 +20,8 @@ export class UsersService {
     return this.usersRepository.findOne({ where: { client_id } });
   }
 
-  async createUser(user: User) {
-    this.usersRepository.save(user);
+  async createUser(user: User): Promise<User> {
+    return this.usersRepository.save(user);
   }
 
   async remove(id: string): Promise<void> {

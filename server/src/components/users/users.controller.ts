@@ -30,7 +30,7 @@ export class UsersController {
     return this.usersService.findByClientId(id);
   }
 
-  @Post() create(@Body() user: User) {
+  @Post() create(@Body() user: User): Promise<User> {
     return this.usersService.createUser(user);
   }
 
